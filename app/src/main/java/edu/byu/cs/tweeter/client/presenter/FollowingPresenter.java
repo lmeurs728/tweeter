@@ -6,7 +6,6 @@ import java.util.List;
 
 import edu.byu.cs.tweeter.client.model.service.FollowService;
 import edu.byu.cs.tweeter.client.model.service.UserService;
-import edu.byu.cs.tweeter.client.view.main.following.FollowingFragment;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 
@@ -16,7 +15,7 @@ public class FollowingPresenter implements FollowService.Observer, UserService.O
     private static final int PAGE_SIZE = 10;
 
     private final View view;
-    private UserService userService;
+    private final UserService userService;
 
     private final User user;
     private final AuthToken authToken;
@@ -35,6 +34,11 @@ public class FollowingPresenter implements FollowService.Observer, UserService.O
         view.displayMessage(message);
     }
 
+    @Override
+    public void handleLoginSuccess(User loggedInUser) {
+        // Do nothing
+    }
+
     public interface View {
         void setLoading(boolean value);
         void addItems(List<User> newUsers);
@@ -51,24 +55,12 @@ public class FollowingPresenter implements FollowService.Observer, UserService.O
         userService = new UserService(this);
     }
 
-    public User getLastFollowee() {
-        return lastFollowee;
-    }
-
     private void setLastFollowee(User lastFollowee) {
         this.lastFollowee = lastFollowee;
     }
 
-    public boolean isHasMorePages() {
-        return hasMorePages;
-    }
-
     private void setHasMorePages(boolean hasMorePages) {
         this.hasMorePages = hasMorePages;
-    }
-
-    public boolean isLoading() {
-        return isLoading;
     }
 
     private void setLoading(boolean loading) {

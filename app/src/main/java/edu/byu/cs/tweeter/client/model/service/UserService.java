@@ -15,7 +15,7 @@ import edu.byu.cs.tweeter.util.Pair;
 
 public class UserService {
 
-    private final UserService.Observer observer;
+    private final Observer observer;
 
     public UserService(Observer observer) {
         this.observer = observer;
@@ -24,6 +24,8 @@ public class UserService {
     public interface Observer {
         void handleUserSuccess(User user);
         void sendMessage(String message);
+
+        void handleLoginSuccess(User loggedInUser);
     }
 
     public void getUser(String clickable) {
@@ -490,6 +492,48 @@ public class UserService {
             msg.setData(msgBundle);
 
             messageHandler.sendMessage(msg);
+        }
+    }
+
+    public LoginTask getLoginTask(String alias, String password) {
+        return new LoginTask(alias, password, new LoginHandler(observer));
+    }
+
+    public void login(String alias, String password) {
+        // Send the login request.
+        LoginTask loginTask = getLoginTask(alias, password);
+        BackgroundTaskUtils.runTask(loginTask);
+    }
+
+    /**
+     * Message handler (i.e., observer) for LoginTask
+     */
+    private class LoginHandler extends Handler {
+        Observer observer;
+        
+        public LoginHandler(Observer observer) {
+            this.observer = observer;
+        }
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(UserService.LoginTask.SUCCESS_KEY);
+            if (success) {
+                User loggedInUser = (User) msg.getData().getSerializable(UserService.LoginTask.USER_KEY);
+                AuthToken authToken = (AuthToken) msg.getData().getSerializable(UserService.LoginTask.AUTH_TOKEN_KEY);
+
+                // Cache user session information
+                Cache.getInstance().setCurrUser(loggedInUser);
+                Cache.getInstance().setCurrUserAuthToken(authToken);
+
+                observer.handleLoginSuccess(loggedInUser);
+            } else if (msg.getData().containsKey(UserService.LoginTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(UserService.LoginTask.MESSAGE_KEY);
+                observer.sendMessage("Failed to login: " + message);
+            } else if (msg.getData().containsKey(UserService.LoginTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(UserService.LoginTask.EXCEPTION_KEY);
+                observer.sendMessage("Failed to login because of exception: " + ex.getMessage());
+            }
         }
     }
 }

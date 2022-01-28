@@ -82,6 +82,11 @@ public class FollowersPresenter implements UserService.Observer, FollowService.O
         view.displayMessage(message);
     }
 
+    @Override
+    public void handleLoginSuccess(User loggedInUser) {
+        // Do nothing
+    }
+
     public interface View {
         void setLoading(boolean value);
         void addItems(List<User> newUsers);
