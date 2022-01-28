@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public interface Observer {
-        void handleSuccess(User user);
+        void handleUserSuccess(User user);
         void sendMessage(String message);
     }
 
@@ -53,7 +53,7 @@ public class UserService {
             boolean success = msg.getData().getBoolean(GetUserTask.SUCCESS_KEY);
             if (success) {
                 User user = (User) msg.getData().getSerializable(GetUserTask.USER_KEY);
-                observer.handleSuccess(user);
+                observer.handleUserSuccess(user);
             }
             else if (msg.getData().containsKey(GetUserTask.MESSAGE_KEY)) {
                 String message = msg.getData().getString(GetUserTask.MESSAGE_KEY);

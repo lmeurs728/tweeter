@@ -12,7 +12,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 public class FeedPresenter implements UserService.Observer {
 
     @Override
-    public void handleSuccess(User user) {
+    public void handleUserSuccess(User user) {
         view.startActivity(user);
     }
 
@@ -26,8 +26,8 @@ public class FeedPresenter implements UserService.Observer {
         void startActivity(User user);
     }
 
-    private View view;
-    private UserService userService;
+    private final View view;
+    private final UserService userService;
 
     public FeedPresenter(View view) {
         this.view = view;
@@ -36,7 +36,6 @@ public class FeedPresenter implements UserService.Observer {
 
     public void getUsersProfile(String handle) {
         userService.getUser(handle);
-
     }
 
 

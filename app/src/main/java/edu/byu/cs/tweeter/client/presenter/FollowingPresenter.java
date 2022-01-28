@@ -5,16 +5,19 @@ import android.util.Log;
 import java.util.List;
 
 import edu.byu.cs.tweeter.client.model.service.FollowService;
+import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.client.view.main.following.FollowingFragment;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 
-public class FollowingPresenter implements FollowService.Observer {
+public class FollowingPresenter implements FollowService.Observer, UserService.Observer {
 
     private static final String LOG_TAG = "FollowingPresenter";
     private static final int PAGE_SIZE = 10;
 
     private final View view;
+    private UserService userService;
+
     private final User user;
     private final AuthToken authToken;
 
@@ -22,16 +25,30 @@ public class FollowingPresenter implements FollowService.Observer {
     private boolean hasMorePages = true;
     private boolean isLoading = false;
 
+    @Override
+    public void handleUserSuccess(User user) {
+        view.startActivity(user);
+    }
+
+    @Override
+    public void sendMessage(String message) {
+        view.displayMessage(message);
+    }
+
     public interface View {
         void setLoading(boolean value);
         void addItems(List<User> newUsers);
         void displayErrorMessage(String message);
+
+        void startActivity(User user);
+        void displayMessage(String message);
     }
 
     public FollowingPresenter(View view, User user, AuthToken authToken) {
         this.view = view;
         this.user = user;
         this.authToken = authToken;
+        userService = new UserService(this);
     }
 
     public User getLastFollowee() {
@@ -141,5 +158,9 @@ public class FollowingPresenter implements FollowService.Observer {
         view.setLoading(false);
         view.displayErrorMessage(errorMessage);
         setLoading(false);
+    }
+
+    public void getUsersProfile(String handle) {
+        userService.getUser(handle);
     }
 }
