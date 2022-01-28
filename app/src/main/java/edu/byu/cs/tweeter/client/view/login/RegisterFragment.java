@@ -91,26 +91,13 @@ public class RegisterFragment extends Fragment implements RegisterPresenter.View
             public void onClick(View view) {
                 // Register and move to MainActivity.
                 try {
-                    validateRegistration();
+                    presenter.validateRegistration(firstName, lastName, alias, password, imageToUpload);
                     errorView.setText(null);
                     registeringToast = Toast.makeText(getContext(), "Registering...", Toast.LENGTH_LONG);
                     registeringToast.show();
 
-                    // Convert image to byte array.
-                    Bitmap image = ((BitmapDrawable) imageToUpload.getDrawable()).getBitmap();
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                    byte[] imageBytes = bos.toByteArray();
+                    presenter.register(firstName, lastName, alias, password, imageToUpload);
 
-                    // Intentionally, Use the java Base64 encoder so it is compatible with M4.
-                    String imageBytesBase64 = Base64.getEncoder().encodeToString(imageBytes);
-
-                    // Send register request.
-                    UserService.RegisterTask registerTask = new UserService.RegisterTask(firstName.getText().toString(), lastName.getText().toString(),
-                            alias.getText().toString(), password.getText().toString(), imageBytesBase64, new RegisterHandler());
-
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(registerTask);
                 } catch (Exception e) {
                     errorView.setText(e.getMessage());
                 }
@@ -134,63 +121,24 @@ public class RegisterFragment extends Fragment implements RegisterPresenter.View
         }
     }
 
-    public void validateRegistration() {
-        if (firstName.getText().length() == 0) {
-            throw new IllegalArgumentException("First Name cannot be empty.");
-        }
-        if (lastName.getText().length() == 0) {
-            throw new IllegalArgumentException("Last Name cannot be empty.");
-        }
-        if (alias.getText().length() == 0) {
-            throw new IllegalArgumentException("Alias cannot be empty.");
-        }
-        if (alias.getText().charAt(0) != '@') {
-            throw new IllegalArgumentException("Alias must begin with @.");
-        }
-        if (alias.getText().length() < 2) {
-            throw new IllegalArgumentException("Alias must contain 1 or more characters after the @.");
-        }
-        if (password.getText().length() == 0) {
-            throw new IllegalArgumentException("Password cannot be empty.");
-        }
-
-        if (imageToUpload.getDrawable() == null) {
-            throw new IllegalArgumentException("Profile image must be uploaded.");
-        }
+    @Override
+    public void sendMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    // RegisterHandler
+    @Override
+    public void registerSuccess(User registeredUser) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
 
-    private class RegisterHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(UserService.RegisterTask.SUCCESS_KEY);
-            if (success) {
-                User registeredUser = (User) msg.getData().getSerializable(UserService.RegisterTask.USER_KEY);
-                AuthToken authToken = (AuthToken) msg.getData().getSerializable(UserService.RegisterTask.AUTH_TOKEN_KEY);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, registeredUser);
 
-                Intent intent = new Intent(getContext(), MainActivity.class);
+        registeringToast.cancel();
 
-                Cache.getInstance().setCurrUser(registeredUser);
-                Cache.getInstance().setCurrUserAuthToken(authToken);
-
-                intent.putExtra(MainActivity.CURRENT_USER_KEY, registeredUser);
-
-                registeringToast.cancel();
-
-                Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
-                try {
-                    startActivity(intent);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (msg.getData().containsKey(UserService.RegisterTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(UserService.RegisterTask.MESSAGE_KEY);
-                Toast.makeText(getContext(), "Failed to register: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(UserService.RegisterTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(UserService.RegisterTask.EXCEPTION_KEY);
-                Toast.makeText(getContext(), "Failed to register because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
+        Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

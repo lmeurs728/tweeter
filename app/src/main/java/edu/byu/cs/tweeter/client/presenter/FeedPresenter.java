@@ -44,6 +44,11 @@ public class FeedPresenter implements UserService.Observer {
         // Do nothing
     }
 
+    @Override
+    public void handleRegisterSuccess(User registeredUser) {
+        // Do nothing
+    }
+
     public void loadMoreItems() {
         view.setLoading(true);
         StatusService.GetFeedTask getFeedTask = new StatusService.GetFeedTask(Cache.getInstance().getCurrUserAuthToken(),

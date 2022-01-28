@@ -39,6 +39,11 @@ public class FollowingPresenter implements FollowService.Observer, UserService.O
         // Do nothing
     }
 
+    @Override
+    public void handleRegisterSuccess(User registeredUser) {
+        // Do nothing
+    }
+
     public interface View {
         void setLoading(boolean value);
         void addItems(List<User> newUsers);

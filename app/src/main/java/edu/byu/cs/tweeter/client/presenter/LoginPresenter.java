@@ -46,6 +46,11 @@ public class LoginPresenter implements UserService.Observer {
         view.loginSuccess(loggedInUser);
     }
 
+    @Override
+    public void handleRegisterSuccess(User registeredUser) {
+        // Do nothing
+    }
+
     public void login(EditText alias, EditText password) {
         doLoginTask(alias.getText().toString(), password.getText().toString());
     }

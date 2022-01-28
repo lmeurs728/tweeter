@@ -1,13 +1,16 @@
 package edu.byu.cs.tweeter.client.model.service;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.util.FakeData;
@@ -26,6 +29,8 @@ public class UserService {
         void sendMessage(String message);
 
         void handleLoginSuccess(User loggedInUser);
+
+        void handleRegisterSuccess(User registeredUser);
     }
 
     public void getUser(String clickable) {
@@ -533,6 +538,57 @@ public class UserService {
             } else if (msg.getData().containsKey(UserService.LoginTask.EXCEPTION_KEY)) {
                 Exception ex = (Exception) msg.getData().getSerializable(UserService.LoginTask.EXCEPTION_KEY);
                 observer.sendMessage("Failed to login because of exception: " + ex.getMessage());
+            }
+        }
+    }
+
+    public RegisterTask getRegisterTask(String firstName, String lastName, String username, String password, String image) {
+        return new RegisterTask(firstName, lastName, username, password, image, new RegisterHandler(observer));
+    }
+
+    public void register(String firstName, String lastName, String username, String password, String image) {
+        // Send register request.
+        RegisterTask registerTask = getRegisterTask(firstName, lastName, username, password, image);
+        BackgroundTaskUtils.runTask(registerTask);
+    }
+
+    private class RegisterHandler extends Handler {
+        private final Observer observer;
+
+        public RegisterHandler(Observer observer) {
+            this.observer = observer;
+        }
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(UserService.RegisterTask.SUCCESS_KEY);
+            if (success) {
+                User registeredUser = (User) msg.getData().getSerializable(UserService.RegisterTask.USER_KEY);
+                AuthToken authToken = (AuthToken) msg.getData().getSerializable(UserService.RegisterTask.AUTH_TOKEN_KEY);
+
+                Cache.getInstance().setCurrUser(registeredUser);
+                Cache.getInstance().setCurrUserAuthToken(authToken);
+
+                observer.handleRegisterSuccess(registeredUser);
+
+//                Intent intent = new Intent(getContext(), MainActivity.class);
+//
+//                intent.putExtra(MainActivity.CURRENT_USER_KEY, registeredUser);
+//
+//                registeringToast.cancel();
+//
+//                Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
+//                try {
+//                    startActivity(intent);
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                }
+            } else if (msg.getData().containsKey(UserService.RegisterTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(UserService.RegisterTask.MESSAGE_KEY);
+                observer.sendMessage("Failed to register: " + message);
+            } else if (msg.getData().containsKey(UserService.RegisterTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(UserService.RegisterTask.EXCEPTION_KEY);
+                observer.sendMessage("Failed to register because of exception: " + ex.getMessage());
             }
         }
     }
