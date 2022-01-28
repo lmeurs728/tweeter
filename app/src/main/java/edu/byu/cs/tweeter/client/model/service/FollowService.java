@@ -39,6 +39,7 @@ public class FollowService {
         void handleFailure(String message);
         default void handleException(Exception exception){}
         default void handleFollowersCountSuccess(String s){}
+        default void handleFollowingCountSuccess(String s){}
     }
 
     /**
@@ -713,4 +714,33 @@ public class FollowService {
             }
         }
     }
+
+    public void doGetFollowingCountTask(User selectedUser) {
+        FollowService.GetFollowingCountTask followingCountTask = new FollowService.GetFollowingCountTask(Cache.getInstance().getCurrUserAuthToken(),
+                selectedUser, new GetFollowingCountHandler());
+        BackgroundTaskUtils.runTask(followingCountTask);
+    }
+
+    // GetFollowingCountHandler
+
+    private class GetFollowingCountHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(FollowService.GetFollowingCountTask.SUCCESS_KEY);
+            if (success) {
+                int count = msg.getData().getInt(FollowService.GetFollowingCountTask.COUNT_KEY);
+                observer.handleFollowingCountSuccess(String.valueOf(count));
+//                followeeCount.setText(getString(R.string.followeeCount, String.valueOf(count)));
+            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(FollowService.GetFollowingCountTask.MESSAGE_KEY);
+                observer.handleFailure("Failed to get following count: " + message);
+//                Toast.makeText(MainActivity.this, "Failed to get following count: " + message, Toast.LENGTH_LONG).show();
+            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowingCountTask.EXCEPTION_KEY);
+                observer.handleFailure("Failed to get following count because of exception: " + ex.getMessage());
+//                Toast.makeText(MainActivity.this, "Failed to get following count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }

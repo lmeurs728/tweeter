@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
     }
 
     public void updateSelectedUserFollowingAndFollowers() {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+//        ExecutorService executor = Executors.newFixedThreadPool(2);
 
         presenter.doGetFollowersCountTask(selectedUser);
 //        // Get count of most recently selected user's followers.
@@ -266,9 +266,10 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
 //        executor.execute(followersCountTask);
 
         // Get count of most recently selected user's followees (who they are following)
-        FollowService.GetFollowingCountTask followingCountTask = new FollowService.GetFollowingCountTask(Cache.getInstance().getCurrUserAuthToken(),
-                selectedUser, new GetFollowingCountHandler());
-        executor.execute(followingCountTask);
+        presenter.doGetFollowingCountTask(selectedUser);
+//        FollowService.GetFollowingCountTask followingCountTask = new FollowService.GetFollowingCountTask(Cache.getInstance().getCurrUserAuthToken(),
+//                selectedUser, new GetFollowingCountHandler());
+//        executor.execute(followingCountTask);
     }
 
     public void updateFollowButton(boolean removed) {
@@ -297,6 +298,11 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
     @Override
     public void handleFollowersCountSuccess(String s) {
         followerCount.setText(getString(R.string.followerCount, s));
+    }
+
+    @Override
+    public void handleFollowingCountSuccess(String s) {
+        followeeCount.setText(getString(R.string.followeeCount, s));
     }
 
 //    // LogoutHandler
@@ -337,24 +343,24 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
 //        }
 //    }
 
-    // GetFollowingCountHandler
-
-    private class GetFollowingCountHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(FollowService.GetFollowingCountTask.SUCCESS_KEY);
-            if (success) {
-                int count = msg.getData().getInt(FollowService.GetFollowingCountTask.COUNT_KEY);
-                followeeCount.setText(getString(R.string.followeeCount, String.valueOf(count)));
-            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(FollowService.GetFollowingCountTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to get following count: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowingCountTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to get following count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
+//    // GetFollowingCountHandler
+//
+//    private class GetFollowingCountHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(FollowService.GetFollowingCountTask.SUCCESS_KEY);
+//            if (success) {
+//                int count = msg.getData().getInt(FollowService.GetFollowingCountTask.COUNT_KEY);
+//                followeeCount.setText(getString(R.string.followeeCount, String.valueOf(count)));
+//            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(FollowService.GetFollowingCountTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to get following count: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(FollowService.GetFollowingCountTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowingCountTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to get following count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
     // IsFollowerHandler
 

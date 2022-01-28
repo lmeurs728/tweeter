@@ -16,6 +16,11 @@ public class MainActivityPresenter implements UserService.Observer, FollowServic
     }
 
     @Override
+    public void handleFollowingCountSuccess(String s) {
+        view.handleFollowingCountSuccess(s);
+    }
+
+    @Override
     public void sendMessage(String message) {
         view.sendMessage(message);
     }
@@ -29,10 +34,15 @@ public class MainActivityPresenter implements UserService.Observer, FollowServic
         new FollowService(this).doGetFollowersCountTask(selectedUser);
     }
 
+    public void doGetFollowingCountTask(User selectedUser) {
+        new FollowService(this).doGetFollowingCountTask(selectedUser);
+    }
+
     public interface View {
         void handleLogoutSuccess();
         void sendMessage(String message);
         void handleFollowersCountSuccess(String s);
+        void handleFollowingCountSuccess(String s);
     }
 
     private final View view;
