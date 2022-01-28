@@ -9,6 +9,7 @@ import edu.byu.cs.tweeter.client.model.service.FollowService;
 import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.client.view.main.followers.FollowersFragment;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
+import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 
 public class FollowersPresenter implements UserService.Observer, FollowService.Observer {
@@ -80,16 +81,6 @@ public class FollowersPresenter implements UserService.Observer, FollowService.O
     @Override
     public void sendMessage(String message) {
         view.displayMessage(message);
-    }
-
-    @Override
-    public void handleLoginSuccess(User loggedInUser) {
-        // Do nothing
-    }
-
-    @Override
-    public void handleRegisterSuccess(User registeredUser) {
-        // Do nothing
     }
 
     public interface View {

@@ -343,12 +343,7 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
                     totalItemCount && firstVisibleItemPosition >= 0) {
                 // Run this code later on the UI thread
                 final Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.loadMoreItems();
-                    }
-                }, 0);
+                handler.postDelayed(() -> presenter.loadMoreItems(), 0);
             }
         }
     }

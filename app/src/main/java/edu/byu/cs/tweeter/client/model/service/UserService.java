@@ -28,9 +28,13 @@ public class UserService {
         void handleUserSuccess(User user);
         void sendMessage(String message);
 
-        void handleLoginSuccess(User loggedInUser);
+        default void handleLoginSuccess(User loggedInUser) {
+            // do nothing
+        }
 
-        void handleRegisterSuccess(User registeredUser);
+        default void handleRegisterSuccess(User registeredUser) {
+            // do nothing
+        }
     }
 
     public void getUser(String clickable) {

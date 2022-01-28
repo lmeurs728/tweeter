@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -30,13 +29,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.model.service.StatusService;
-import edu.byu.cs.tweeter.client.model.service.UserService;
-import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.client.presenter.StoryPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.Status;
@@ -51,10 +45,6 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
 
     private static final int LOADING_DATA_VIEW = 0;
     private static final int ITEM_VIEW = 1;
-
-    private static final int PAGE_SIZE = 10;
-
-    private User user;
 
     private StoryRecyclerViewAdapter storyRecyclerViewAdapter;
 
@@ -83,9 +73,12 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
         View view = inflater.inflate(R.layout.fragment_story, container, false);
 
         //noinspection ConstantConditions
-        user = (User) getArguments().getSerializable(USER_KEY);
+        User user = (User) getArguments().getSerializable(USER_KEY);
 
         RecyclerView storyRecyclerView = view.findViewById(R.id.storyRecyclerView);
+
+        presenter = new StoryPresenter(this);
+        presenter.setUser(user);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         storyRecyclerView.setLayoutManager(layoutManager);
@@ -95,9 +88,32 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
 
         storyRecyclerView.addOnScrollListener(new StoryRecyclerViewPaginationScrollListener(layoutManager));
 
-        presenter = new StoryPresenter(this);
+        presenter.getStory();
+        presenter.loadMoreItems();
 
         return view;
+    }
+
+    @Override
+    public void setLoading(boolean b) {
+        storyRecyclerViewAdapter.setLoading(b);
+    }
+
+    @Override
+    public void addStatuses(List<Status> statuses) {
+        storyRecyclerViewAdapter.addItems(statuses);
+    }
+
+    @Override
+    public void displayMessage(String s) {
+        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void startActivity(User user) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
+        startActivity(intent);
     }
 
     /**
@@ -125,16 +141,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
             post = itemView.findViewById(R.id.statusPost);
             datetime = itemView.findViewById(R.id.statusDatetime);
             
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    UserService.GetUserTask getUserTask = new UserService.GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
-                            userAlias.getText().toString(), new GetUserHandler());
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(getUserTask);
-                    Toast.makeText(getContext(), "Getting user's profile...", Toast.LENGTH_LONG).show();
-                }
-            });
+            itemView.setOnClickListener(view -> presenter.getUsersProfile(userAlias.getText().toString()));
         }
 
         /**
@@ -168,11 +175,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(clickable));
                             startActivity(intent);
                         } else {
-                            UserService.GetUserTask getUserTask = new UserService.GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
-                                    clickable, new GetUserHandler());
-                            ExecutorService executor = Executors.newSingleThreadExecutor();
-                            executor.execute(getUserTask);
-                            Toast.makeText(getContext(), "Getting user's profile...", Toast.LENGTH_LONG).show();
+                            presenter.getUsersProfile(clickable);
                         }
                     }
 
@@ -197,29 +200,6 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
             post.setClickable(true);
             post.setMovementMethod(LinkMovementMethod.getInstance());
         }
-
-        /**
-         * Message handler (i.e., observer) for GetUserTask.
-         */
-        private class GetUserHandler extends Handler {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                boolean success = msg.getData().getBoolean(UserService.GetUserTask.SUCCESS_KEY);
-                if (success) {
-                    User user = (User) msg.getData().getSerializable(UserService.GetUserTask.USER_KEY);
-
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
-                    startActivity(intent);
-                } else if (msg.getData().containsKey(UserService.GetUserTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(UserService.GetUserTask.MESSAGE_KEY);
-                    Toast.makeText(getContext(), "Failed to get user's profile: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(UserService.GetUserTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(UserService.GetUserTask.EXCEPTION_KEY);
-                    Toast.makeText(getContext(), "Failed to get user's profile because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        }
     }
 
     /**
@@ -228,17 +208,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
     private class StoryRecyclerViewAdapter extends RecyclerView.Adapter<StoryHolder> {
 
         private final List<Status> story = new ArrayList<>();
-        private Status lastStatus;
-
-        private boolean hasMorePages;
         private boolean isLoading = false;
-
-        /**
-         * Creates an instance and loads the first page of story data.
-         */
-        StoryRecyclerViewAdapter() {
-            loadMoreItems();
-        }
 
         /**
          * Adds new statuses to the list from which the RecyclerView retrieves the statuses it displays
@@ -337,22 +307,6 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
         }
 
         /**
-         * Causes the Adapter to display a loading footer and make a request to get more story
-         * data.
-         */
-        void loadMoreItems() {
-            if (!isLoading) {   // This guard is important for avoiding a race condition in the scrolling code.
-                isLoading = true;
-                addLoadingFooter();
-
-                StatusService.GetStoryTask getStoryTask = new StatusService.GetStoryTask(Cache.getInstance().getCurrUserAuthToken(),
-                        user, PAGE_SIZE, lastStatus, new GetStoryHandler());
-                ExecutorService executor = Executors.newSingleThreadExecutor();
-                executor.execute(getStoryTask);
-            }
-        }
-
-        /**
          * Adds a dummy status to the list of statuses so the RecyclerView will display a view (the
          * loading footer view) at the bottom of the list.
          */
@@ -372,31 +326,12 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
             removeItem(story.get(story.size() - 1));
         }
 
-
-        /**
-         * Message handler (i.e., observer) for GetStoryTask.
-         */
-        private class GetStoryHandler extends Handler {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                isLoading = false;
+        public void setLoading(boolean b) {
+            this.isLoading = b;
+            if (b) {
+                addLoadingFooter();
+            } else {
                 removeLoadingFooter();
-
-                boolean success = msg.getData().getBoolean(StatusService.GetStoryTask.SUCCESS_KEY);
-                if (success) {
-                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(StatusService.GetStoryTask.STATUSES_KEY);
-                    hasMorePages = msg.getData().getBoolean(StatusService.GetStoryTask.MORE_PAGES_KEY);
-
-                    lastStatus = (statuses.size() > 0) ? statuses.get(statuses.size() - 1) : null;
-
-                    storyRecyclerViewAdapter.addItems(statuses);
-                } else if (msg.getData().containsKey(StatusService.GetStoryTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(StatusService.GetStoryTask.MESSAGE_KEY);
-                    Toast.makeText(getContext(), "Failed to get story: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(StatusService.GetStoryTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(StatusService.GetStoryTask.EXCEPTION_KEY);
-                    Toast.makeText(getContext(), "Failed to get story because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
             }
         }
     }
@@ -435,14 +370,12 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
             int totalItemCount = layoutManager.getItemCount();
             int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
 
-            if (!storyRecyclerViewAdapter.isLoading && storyRecyclerViewAdapter.hasMorePages) {
+            if (!storyRecyclerViewAdapter.isLoading && presenter.getHasMorePages()) {
                 if ((visibleItemCount + firstVisibleItemPosition) >=
                         totalItemCount && firstVisibleItemPosition >= 0) {
                     // Run this code later on the UI thread
                     final Handler handler = new Handler(Looper.getMainLooper());
-                    handler.postDelayed(() -> {
-                            storyRecyclerViewAdapter.loadMoreItems();
-                    }, 0);
+                    handler.postDelayed(() -> presenter.loadMoreItems(), 0);
                 }
             }
         }
