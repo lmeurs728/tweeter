@@ -111,10 +111,11 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
             followButton.setVisibility(View.GONE);
         } else {
             followButton.setVisibility(View.VISIBLE);
-            FollowService.IsFollowerTask isFollowerTask = new FollowService.IsFollowerTask(Cache.getInstance().getCurrUserAuthToken(),
-                    Cache.getInstance().getCurrUser(), selectedUser, new IsFollowerHandler());
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            executor.execute(isFollowerTask);
+            presenter.doIsFollowerTask(selectedUser);
+//            FollowService.IsFollowerTask isFollowerTask = new FollowService.IsFollowerTask(Cache.getInstance().getCurrUserAuthToken(),
+//                    Cache.getInstance().getCurrUser(), selectedUser, new IsFollowerHandler());
+//            ExecutorService executor = Executors.newSingleThreadExecutor();
+//            executor.execute(isFollowerTask);
         }
 
         followButton.setOnClickListener(new View.OnClickListener() {
@@ -123,17 +124,19 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
                 followButton.setEnabled(false);
 
                 if (followButton.getText().toString().equals(v.getContext().getString(R.string.following))) {
-                    UserService.UnfollowTask unfollowTask = new UserService.UnfollowTask(Cache.getInstance().getCurrUserAuthToken(),
-                            selectedUser, new UnfollowHandler());
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(unfollowTask);
+                    presenter.doUnfollowTask(selectedUser);
+//                    UserService.UnfollowTask unfollowTask = new UserService.UnfollowTask(Cache.getInstance().getCurrUserAuthToken(),
+//                            selectedUser, new UnfollowHandler());
+//                    ExecutorService executor = Executors.newSingleThreadExecutor();
+//                    executor.execute(unfollowTask);
 
                     Toast.makeText(MainActivity.this, "Removing " + selectedUser.getName() + "...", Toast.LENGTH_LONG).show();
                 } else {
-                    FollowService.FollowTask followTask = new FollowService.FollowTask(Cache.getInstance().getCurrUserAuthToken(),
-                            selectedUser, new FollowHandler());
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(followTask);
+                    presenter.doFollowTask(selectedUser);
+//                    FollowService.FollowTask followTask = new FollowService.FollowTask(Cache.getInstance().getCurrUserAuthToken(),
+//                            selectedUser, new FollowHandler());
+//                    ExecutorService executor = Executors.newSingleThreadExecutor();
+//                    executor.execute(followTask);
 
                     Toast.makeText(MainActivity.this, "Adding " + selectedUser.getName() + "...", Toast.LENGTH_LONG).show();
                 }
@@ -182,10 +185,11 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
 
         try {
             Status newStatus = new Status(post, Cache.getInstance().getCurrUser(), getFormattedDateTime(), parseURLs(post), parseMentions(post));
-            StatusService.PostStatusTask statusTask = new StatusService.PostStatusTask(Cache.getInstance().getCurrUserAuthToken(),
-                    newStatus, new PostStatusHandler());
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            executor.execute(statusTask);
+            presenter.doPostStatusTask(newStatus);
+//            StatusService.PostStatusTask statusTask = new StatusService.PostStatusTask(Cache.getInstance().getCurrUserAuthToken(),
+//                    newStatus, new PostStatusHandler());
+//            ExecutorService executor = Executors.newSingleThreadExecutor();
+//            executor.execute(statusTask);
         } catch (Exception ex) {
             Log.e(LOG_TAG, ex.getMessage(), ex);
             Toast.makeText(this, "Failed to post the status because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -305,6 +309,42 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
         followeeCount.setText(getString(R.string.followeeCount, s));
     }
 
+    @Override
+    public void handleIsFollowerSuccess(boolean isFollower) {
+        // If logged in user if a follower of the selected user, display the follow button as "following"
+        if (isFollower) {
+            followButton.setText(R.string.following);
+            followButton.setBackgroundColor(getResources().getColor(R.color.white));
+            followButton.setTextColor(getResources().getColor(R.color.lightGray));
+        } else {
+            followButton.setText(R.string.follow);
+            followButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        }
+    }
+
+    @Override
+    public void handleFollowSuccess() {
+        updateSelectedUserFollowingAndFollowers();
+        updateFollowButton(false);
+    }
+
+    @Override
+    public void enableFollowButton() {
+        followButton.setEnabled(true);
+    }
+
+    @Override
+    public void handleUnfollowSuccess() {
+        updateSelectedUserFollowingAndFollowers();
+        updateFollowButton(true);
+    }
+
+    @Override
+    public void handlePostStatusSuccess() {
+        postingToast.cancel();
+        Toast.makeText(MainActivity.this, "Successfully Posted!", Toast.LENGTH_LONG).show();
+    }
+
 //    // LogoutHandler
 //
 //    private class LogoutHandler extends Handler {
@@ -362,93 +402,93 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
 //        }
 //    }
 
-    // IsFollowerHandler
+//    // IsFollowerHandler
+//
+//    private class IsFollowerHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(FollowService.IsFollowerTask.SUCCESS_KEY);
+//            if (success) {
+//                boolean isFollower = msg.getData().getBoolean(FollowService.IsFollowerTask.IS_FOLLOWER_KEY);
+//
+//                // If logged in user if a follower of the selected user, display the follow button as "following"
+//                if (isFollower) {
+//                    followButton.setText(R.string.following);
+//                    followButton.setBackgroundColor(getResources().getColor(R.color.white));
+//                    followButton.setTextColor(getResources().getColor(R.color.lightGray));
+//                } else {
+//                    followButton.setText(R.string.follow);
+//                    followButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+//                }
+//            } else if (msg.getData().containsKey(FollowService.IsFollowerTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(FollowService.IsFollowerTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to determine following relationship: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(FollowService.IsFollowerTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(FollowService.IsFollowerTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to determine following relationship because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
-    private class IsFollowerHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(FollowService.IsFollowerTask.SUCCESS_KEY);
-            if (success) {
-                boolean isFollower = msg.getData().getBoolean(FollowService.IsFollowerTask.IS_FOLLOWER_KEY);
+//    // FollowHandler
+//
+//    private class FollowHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(FollowService.FollowTask.SUCCESS_KEY);
+//            if (success) {
+//                updateSelectedUserFollowingAndFollowers();
+//                updateFollowButton(false);
+//            } else if (msg.getData().containsKey(FollowService.FollowTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(FollowService.FollowTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to follow: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(FollowService.FollowTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(FollowService.FollowTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to follow because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//
+//            followButton.setEnabled(true);
+//        }
+//    }
 
-                // If logged in user if a follower of the selected user, display the follow button as "following"
-                if (isFollower) {
-                    followButton.setText(R.string.following);
-                    followButton.setBackgroundColor(getResources().getColor(R.color.white));
-                    followButton.setTextColor(getResources().getColor(R.color.lightGray));
-                } else {
-                    followButton.setText(R.string.follow);
-                    followButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                }
-            } else if (msg.getData().containsKey(FollowService.IsFollowerTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(FollowService.IsFollowerTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to determine following relationship: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(FollowService.IsFollowerTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(FollowService.IsFollowerTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to determine following relationship because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
+//    // UnfollowHandler
+//
+//    private class UnfollowHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(UserService.UnfollowTask.SUCCESS_KEY);
+//            if (success) {
+//                updateSelectedUserFollowingAndFollowers();
+//                updateFollowButton(true);
+//            } else if (msg.getData().containsKey(UserService.UnfollowTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(UserService.UnfollowTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to unfollow: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(UserService.UnfollowTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(UserService.UnfollowTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to unfollow because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//
+//            followButton.setEnabled(true);
+//        }
+//    }
 
-    // FollowHandler
-
-    private class FollowHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(FollowService.FollowTask.SUCCESS_KEY);
-            if (success) {
-                updateSelectedUserFollowingAndFollowers();
-                updateFollowButton(false);
-            } else if (msg.getData().containsKey(FollowService.FollowTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(FollowService.FollowTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to follow: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(FollowService.FollowTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(FollowService.FollowTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to follow because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-            followButton.setEnabled(true);
-        }
-    }
-
-    // UnfollowHandler
-
-    private class UnfollowHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(UserService.UnfollowTask.SUCCESS_KEY);
-            if (success) {
-                updateSelectedUserFollowingAndFollowers();
-                updateFollowButton(true);
-            } else if (msg.getData().containsKey(UserService.UnfollowTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(UserService.UnfollowTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to unfollow: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(UserService.UnfollowTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(UserService.UnfollowTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to unfollow because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-            followButton.setEnabled(true);
-        }
-    }
-
-    // PostStatusHandler
-
-    private class PostStatusHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(StatusService.PostStatusTask.SUCCESS_KEY);
-            if (success) {
-                postingToast.cancel();
-                Toast.makeText(MainActivity.this, "Successfully Posted!", Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(StatusService.PostStatusTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(StatusService.PostStatusTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to post status: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(StatusService.PostStatusTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(StatusService.PostStatusTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to post status because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
+//    // PostStatusHandler
+//
+//    private class PostStatusHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(StatusService.PostStatusTask.SUCCESS_KEY);
+//            if (success) {
+//                postingToast.cancel();
+//                Toast.makeText(MainActivity.this, "Successfully Posted!", Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(StatusService.PostStatusTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(StatusService.PostStatusTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to post status: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(StatusService.PostStatusTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(StatusService.PostStatusTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to post status because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
 }
