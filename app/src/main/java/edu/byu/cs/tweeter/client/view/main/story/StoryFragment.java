@@ -34,8 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetStoryTask;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
+import edu.byu.cs.tweeter.client.model.service.StatusService;
+import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.client.presenter.StoryPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
@@ -128,7 +128,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    GetUserTask getUserTask = new GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
+                    UserService.GetUserTask getUserTask = new UserService.GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
                             userAlias.getText().toString(), new GetUserHandler());
                     ExecutorService executor = Executors.newSingleThreadExecutor();
                     executor.execute(getUserTask);
@@ -168,7 +168,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(clickable));
                             startActivity(intent);
                         } else {
-                            GetUserTask getUserTask = new GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
+                            UserService.GetUserTask getUserTask = new UserService.GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
                                     clickable, new GetUserHandler());
                             ExecutorService executor = Executors.newSingleThreadExecutor();
                             executor.execute(getUserTask);
@@ -204,18 +204,18 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
         private class GetUserHandler extends Handler {
             @Override
             public void handleMessage(@NonNull Message msg) {
-                boolean success = msg.getData().getBoolean(GetUserTask.SUCCESS_KEY);
+                boolean success = msg.getData().getBoolean(UserService.GetUserTask.SUCCESS_KEY);
                 if (success) {
-                    User user = (User) msg.getData().getSerializable(GetUserTask.USER_KEY);
+                    User user = (User) msg.getData().getSerializable(UserService.GetUserTask.USER_KEY);
 
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
                     startActivity(intent);
-                } else if (msg.getData().containsKey(GetUserTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(GetUserTask.MESSAGE_KEY);
+                } else if (msg.getData().containsKey(UserService.GetUserTask.MESSAGE_KEY)) {
+                    String message = msg.getData().getString(UserService.GetUserTask.MESSAGE_KEY);
                     Toast.makeText(getContext(), "Failed to get user's profile: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(GetUserTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(GetUserTask.EXCEPTION_KEY);
+                } else if (msg.getData().containsKey(UserService.GetUserTask.EXCEPTION_KEY)) {
+                    Exception ex = (Exception) msg.getData().getSerializable(UserService.GetUserTask.EXCEPTION_KEY);
                     Toast.makeText(getContext(), "Failed to get user's profile because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -345,7 +345,7 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
                 isLoading = true;
                 addLoadingFooter();
 
-                GetStoryTask getStoryTask = new GetStoryTask(Cache.getInstance().getCurrUserAuthToken(),
+                StatusService.GetStoryTask getStoryTask = new StatusService.GetStoryTask(Cache.getInstance().getCurrUserAuthToken(),
                         user, PAGE_SIZE, lastStatus, new GetStoryHandler());
                 ExecutorService executor = Executors.newSingleThreadExecutor();
                 executor.execute(getStoryTask);
@@ -382,19 +382,19 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
                 isLoading = false;
                 removeLoadingFooter();
 
-                boolean success = msg.getData().getBoolean(GetStoryTask.SUCCESS_KEY);
+                boolean success = msg.getData().getBoolean(StatusService.GetStoryTask.SUCCESS_KEY);
                 if (success) {
-                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(GetStoryTask.STATUSES_KEY);
-                    hasMorePages = msg.getData().getBoolean(GetStoryTask.MORE_PAGES_KEY);
+                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(StatusService.GetStoryTask.STATUSES_KEY);
+                    hasMorePages = msg.getData().getBoolean(StatusService.GetStoryTask.MORE_PAGES_KEY);
 
                     lastStatus = (statuses.size() > 0) ? statuses.get(statuses.size() - 1) : null;
 
                     storyRecyclerViewAdapter.addItems(statuses);
-                } else if (msg.getData().containsKey(GetStoryTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(GetStoryTask.MESSAGE_KEY);
+                } else if (msg.getData().containsKey(StatusService.GetStoryTask.MESSAGE_KEY)) {
+                    String message = msg.getData().getString(StatusService.GetStoryTask.MESSAGE_KEY);
                     Toast.makeText(getContext(), "Failed to get story: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(GetStoryTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(GetStoryTask.EXCEPTION_KEY);
+                } else if (msg.getData().containsKey(StatusService.GetStoryTask.EXCEPTION_KEY)) {
+                    Exception ex = (Exception) msg.getData().getSerializable(StatusService.GetStoryTask.EXCEPTION_KEY);
                     Toast.makeText(getContext(), "Failed to get story because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }

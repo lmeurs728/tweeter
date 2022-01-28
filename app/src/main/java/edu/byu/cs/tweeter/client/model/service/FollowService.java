@@ -5,10 +5,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
-import java.io.IOException;
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
@@ -62,6 +67,12 @@ public class FollowService {
         BackgroundTaskUtils.runTask(followingTask);
     }
 
+    public void getFollowers(AuthToken authToken, User targetUser, int limit, User lastFollower) {
+        GetFollowersTask getFollowersTask = getGetFollowersTask(authToken, targetUser, limit, lastFollower);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(getFollowersTask);
+    }
+
     /**
      * Returns an instance of {@link GetFollowingTask}. Allows mocking of the
      * GetFollowingTask class for testing purposes. All usages of GetFollowingTask
@@ -73,6 +84,11 @@ public class FollowService {
     public GetFollowingTask getGetFollowingTask(AuthToken authToken, User targetUser, int limit, User lastFollowee) {
         return new GetFollowingTask(authToken, targetUser, limit, lastFollowee,
                 new MessageHandler(Looper.getMainLooper(), observer));
+    }
+
+    public GetFollowersTask getGetFollowersTask(AuthToken authToken, User targetUser, int limit, User lastFollower) {
+        return new GetFollowersTask(authToken, targetUser, limit, lastFollower,
+                new GetFollowersHandler(Looper.getMainLooper(), observer));
     }
 
     public static class MessageHandler extends Handler {
@@ -97,6 +113,36 @@ public class FollowService {
             } else if (bundle.containsKey(GetFollowingTask.EXCEPTION_KEY)) {
                 Exception ex = (Exception) bundle.getSerializable(GetFollowingTask.EXCEPTION_KEY);
                 observer.handleException(ex);
+            }
+        }
+    }
+
+    /**
+     * Message handler (i.e., observer) for GetFollowersTask.
+     */
+    private static class GetFollowersHandler extends Handler {
+        private final Observer observer;
+
+        public GetFollowersHandler(Looper looper, Observer observer) {
+            super(looper);
+            this.observer = observer;
+        }
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(GetFollowersTask.SUCCESS_KEY);
+            if (success) {
+                List<User> followers = (List<User>) msg.getData().getSerializable(GetFollowersTask.FOLLOWERS_KEY);
+                boolean hasMorePages = msg.getData().getBoolean(GetFollowersTask.MORE_PAGES_KEY);
+                observer.handleSuccess(followers, hasMorePages);
+            } else if (msg.getData().containsKey(GetFollowersTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(GetFollowersTask.MESSAGE_KEY);
+                observer.handleFailure("Failed to get followers: " + message);
+//                Toast.makeText(getContext(), "Failed to get followers: " + message, Toast.LENGTH_LONG).show();
+            } else if (msg.getData().containsKey(GetFollowersTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(GetFollowersTask.EXCEPTION_KEY);
+                observer.handleFailure("Failed to get followers because of exception: " + ex.getMessage());
+//                Toast.makeText(getContext(), "Failed to get followers because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -219,5 +265,420 @@ public class FollowService {
 //            messageHandler.sendMessage(msg);
 //        }
 
+    }
+
+    /**
+     * Background task that queries how many followers a user has.
+     */
+    public static class GetFollowersCountTask implements Runnable {
+        private static final String LOG_TAG = "GetFollowersCountTask";
+
+        public static final String SUCCESS_KEY = "success";
+        public static final String COUNT_KEY = "count";
+        public static final String MESSAGE_KEY = "message";
+        public static final String EXCEPTION_KEY = "exception";
+
+        /**
+         * Auth token for logged-in user.
+         */
+        private AuthToken authToken;
+        /**
+         * The user whose follower count is being retrieved.
+         * (This can be any user, not just the currently logged-in user.)
+         */
+        private User targetUser;
+        /**
+         * Message handler that will receive task results.
+         */
+        private Handler messageHandler;
+
+        public GetFollowersCountTask(AuthToken authToken, User targetUser, Handler messageHandler) {
+            this.authToken = authToken;
+            this.targetUser = targetUser;
+            this.messageHandler = messageHandler;
+        }
+
+        @Override
+        public void run() {
+            try {
+
+                sendSuccessMessage(20);
+
+            } catch (Exception ex) {
+                Log.e(LOG_TAG, ex.getMessage(), ex);
+                sendExceptionMessage(ex);
+            }
+        }
+
+        private void sendSuccessMessage(int count) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, true);
+            msgBundle.putInt(COUNT_KEY, count);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendFailedMessage(String message) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putString(MESSAGE_KEY, message);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendExceptionMessage(Exception exception) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putSerializable(EXCEPTION_KEY, exception);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+    }
+
+    /**
+     * Background task that retrieves a page of followers.
+     */
+    public static class GetFollowersTask implements Runnable {
+        private static final String LOG_TAG = "GetFollowersTask";
+
+        public static final String SUCCESS_KEY = "success";
+        public static final String FOLLOWERS_KEY = "followers";
+        public static final String MORE_PAGES_KEY = "more-pages";
+        public static final String MESSAGE_KEY = "message";
+        public static final String EXCEPTION_KEY = "exception";
+
+        /**
+         * Auth token for logged-in user.
+         */
+        private AuthToken authToken;
+        /**
+         * The user whose followers are being retrieved.
+         * (This can be any user, not just the currently logged-in user.)
+         */
+        private User targetUser;
+        /**
+         * Maximum number of followers to return (i.e., page size).
+         */
+        private int limit;
+        /**
+         * The last follower returned in the previous page of results (can be null).
+         * This allows the new page to begin where the previous page ended.
+         */
+        private User lastFollower;
+        /**
+         * Message handler that will receive task results.
+         */
+        private Handler messageHandler;
+
+        public GetFollowersTask(AuthToken authToken, User targetUser, int limit, User lastFollower,
+                                Handler messageHandler) {
+            this.authToken = authToken;
+            this.targetUser = targetUser;
+            this.limit = limit;
+            this.lastFollower = lastFollower;
+            this.messageHandler = messageHandler;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Pair<List<User>, Boolean> pageOfUsers = getFollowers();
+
+                List<User> followers = pageOfUsers.getFirst();
+                boolean hasMorePages = pageOfUsers.getSecond();
+
+                sendSuccessMessage(followers, hasMorePages);
+
+            } catch (Exception ex) {
+                Log.e(LOG_TAG, ex.getMessage(), ex);
+                sendExceptionMessage(ex);
+            }
+        }
+
+        private FakeData getFakeData() {
+            return new FakeData();
+        }
+
+        private Pair<List<User>, Boolean> getFollowers() {
+            Pair<List<User>, Boolean> pageOfUsers = getFakeData().getPageOfUsers(lastFollower, limit, targetUser);
+            return pageOfUsers;
+        }
+
+        private void sendSuccessMessage(List<User> followers, boolean hasMorePages) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, true);
+            msgBundle.putSerializable(FOLLOWERS_KEY, (Serializable) followers);
+            msgBundle.putBoolean(MORE_PAGES_KEY, hasMorePages);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendFailedMessage(String message) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putString(MESSAGE_KEY, message);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendExceptionMessage(Exception exception) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putSerializable(EXCEPTION_KEY, exception);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+    }
+
+    /**
+     * Background task that queries how many other users a specified user is following.
+     */
+    public static class GetFollowingCountTask implements Runnable {
+        private static final String LOG_TAG = "GetFollowingCountTask";
+
+        public static final String SUCCESS_KEY = "success";
+        public static final String COUNT_KEY = "count";
+        public static final String MESSAGE_KEY = "message";
+        public static final String EXCEPTION_KEY = "exception";
+
+        /**
+         * Auth token for logged-in user.
+         */
+        private AuthToken authToken;
+        /**
+         * The user whose following count is being retrieved.
+         * (This can be any user, not just the currently logged-in user.)
+         */
+        private User targetUser;
+        /**
+         * Message handler that will receive task results.
+         */
+        private Handler messageHandler;
+
+        public GetFollowingCountTask(AuthToken authToken, User targetUser, Handler messageHandler) {
+            this.authToken = authToken;
+            this.targetUser = targetUser;
+            this.messageHandler = messageHandler;
+        }
+
+        @Override
+        public void run() {
+            try {
+
+                sendSuccessMessage(20);
+
+            } catch (Exception ex) {
+                Log.e(LOG_TAG, ex.getMessage(), ex);
+                sendExceptionMessage(ex);
+            }
+        }
+
+        private void sendSuccessMessage(int count) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, true);
+            msgBundle.putInt(COUNT_KEY, count);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendFailedMessage(String message) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putString(MESSAGE_KEY, message);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendExceptionMessage(Exception exception) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putSerializable(EXCEPTION_KEY, exception);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+    }
+
+    /**
+     * Background task that establishes a following relationship between two users.
+     */
+    public static class FollowTask implements Runnable {
+        private static final String LOG_TAG = "FollowTask";
+
+        public static final String SUCCESS_KEY = "success";
+        public static final String MESSAGE_KEY = "message";
+        public static final String EXCEPTION_KEY = "exception";
+
+        /**
+         * Auth token for logged-in user.
+         * This user is the "follower" in the relationship.
+         */
+        private AuthToken authToken;
+        /**
+         * The user that is being followed.
+         */
+        private User followee;
+        /**
+         * Message handler that will receive task results.
+         */
+        private Handler messageHandler;
+
+        public FollowTask(AuthToken authToken, User followee, Handler messageHandler) {
+            this.authToken = authToken;
+            this.followee = followee;
+            this.messageHandler = messageHandler;
+        }
+
+        @Override
+        public void run() {
+            try {
+
+                sendSuccessMessage();
+
+            } catch (Exception ex) {
+                Log.e(LOG_TAG, ex.getMessage(), ex);
+                sendExceptionMessage(ex);
+            }
+        }
+
+        private void sendSuccessMessage() {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, true);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendFailedMessage(String message) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putString(MESSAGE_KEY, message);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendExceptionMessage(Exception exception) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putSerializable(EXCEPTION_KEY, exception);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+    }
+
+    /**
+     * Background task that determines if one user is following another.
+     */
+    public static class IsFollowerTask implements Runnable {
+        private static final String LOG_TAG = "IsFollowerTask";
+
+        public static final String SUCCESS_KEY = "success";
+        public static final String IS_FOLLOWER_KEY = "is-follower";
+        public static final String MESSAGE_KEY = "message";
+        public static final String EXCEPTION_KEY = "exception";
+
+        /**
+         * Auth token for logged-in user.
+         */
+        private AuthToken authToken;
+        /**
+         * The alleged follower.
+         */
+        private User follower;
+        /**
+         * The alleged followee.
+         */
+        private User followee;
+        /**
+         * Message handler that will receive task results.
+         */
+        private Handler messageHandler;
+
+        public IsFollowerTask(AuthToken authToken, User follower, User followee, Handler messageHandler) {
+            this.authToken = authToken;
+            this.follower = follower;
+            this.followee = followee;
+            this.messageHandler = messageHandler;
+        }
+
+        @Override
+        public void run() {
+            try {
+
+                sendSuccessMessage(new Random().nextInt() > 0);
+
+            } catch (Exception ex) {
+                Log.e(LOG_TAG, ex.getMessage(), ex);
+                sendExceptionMessage(ex);
+            }
+        }
+
+        private void sendSuccessMessage(boolean isFollower) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, true);
+            msgBundle.putBoolean(IS_FOLLOWER_KEY, isFollower);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendFailedMessage(String message) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putString(MESSAGE_KEY, message);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
+
+        private void sendExceptionMessage(Exception exception) {
+            Bundle msgBundle = new Bundle();
+            msgBundle.putBoolean(SUCCESS_KEY, false);
+            msgBundle.putSerializable(EXCEPTION_KEY, exception);
+
+            Message msg = Message.obtain();
+            msg.setData(msgBundle);
+
+            messageHandler.sendMessage(msg);
+        }
     }
 }

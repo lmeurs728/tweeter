@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.LoginTask;
+import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.client.presenter.LoginPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment implements LoginPresenter.View {
                     loginInToast.show();
 
                     // Send the login request.
-                    LoginTask loginTask = new LoginTask(alias.getText().toString(),
+                    UserService.LoginTask loginTask = new UserService.LoginTask(alias.getText().toString(),
                             password.getText().toString(),
                             new LoginHandler());
                     ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -106,10 +106,10 @@ public class LoginFragment extends Fragment implements LoginPresenter.View {
     private class LoginHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(LoginTask.SUCCESS_KEY);
+            boolean success = msg.getData().getBoolean(UserService.LoginTask.SUCCESS_KEY);
             if (success) {
-                User loggedInUser = (User) msg.getData().getSerializable(LoginTask.USER_KEY);
-                AuthToken authToken = (AuthToken) msg.getData().getSerializable(LoginTask.AUTH_TOKEN_KEY);
+                User loggedInUser = (User) msg.getData().getSerializable(UserService.LoginTask.USER_KEY);
+                AuthToken authToken = (AuthToken) msg.getData().getSerializable(UserService.LoginTask.AUTH_TOKEN_KEY);
 
                 // Cache user session information
                 Cache.getInstance().setCurrUser(loggedInUser);
@@ -122,11 +122,11 @@ public class LoginFragment extends Fragment implements LoginPresenter.View {
 
                 Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
-            } else if (msg.getData().containsKey(LoginTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(LoginTask.MESSAGE_KEY);
+            } else if (msg.getData().containsKey(UserService.LoginTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(UserService.LoginTask.MESSAGE_KEY);
                 Toast.makeText(getContext(), "Failed to login: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(LoginTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(LoginTask.EXCEPTION_KEY);
+            } else if (msg.getData().containsKey(UserService.LoginTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(UserService.LoginTask.EXCEPTION_KEY);
                 Toast.makeText(getContext(), "Failed to login because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
         }

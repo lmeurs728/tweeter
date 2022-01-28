@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.RegisterTask;
+import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.client.presenter.RegisterPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
@@ -106,7 +106,7 @@ public class RegisterFragment extends Fragment implements RegisterPresenter.View
                     String imageBytesBase64 = Base64.getEncoder().encodeToString(imageBytes);
 
                     // Send register request.
-                    RegisterTask registerTask = new RegisterTask(firstName.getText().toString(), lastName.getText().toString(),
+                    UserService.RegisterTask registerTask = new UserService.RegisterTask(firstName.getText().toString(), lastName.getText().toString(),
                             alias.getText().toString(), password.getText().toString(), imageBytesBase64, new RegisterHandler());
 
                     ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -164,10 +164,10 @@ public class RegisterFragment extends Fragment implements RegisterPresenter.View
     private class RegisterHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(RegisterTask.SUCCESS_KEY);
+            boolean success = msg.getData().getBoolean(UserService.RegisterTask.SUCCESS_KEY);
             if (success) {
-                User registeredUser = (User) msg.getData().getSerializable(RegisterTask.USER_KEY);
-                AuthToken authToken = (AuthToken) msg.getData().getSerializable(RegisterTask.AUTH_TOKEN_KEY);
+                User registeredUser = (User) msg.getData().getSerializable(UserService.RegisterTask.USER_KEY);
+                AuthToken authToken = (AuthToken) msg.getData().getSerializable(UserService.RegisterTask.AUTH_TOKEN_KEY);
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
 
@@ -184,11 +184,11 @@ public class RegisterFragment extends Fragment implements RegisterPresenter.View
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-            } else if (msg.getData().containsKey(RegisterTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(RegisterTask.MESSAGE_KEY);
+            } else if (msg.getData().containsKey(UserService.RegisterTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(UserService.RegisterTask.MESSAGE_KEY);
                 Toast.makeText(getContext(), "Failed to register: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(RegisterTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(RegisterTask.EXCEPTION_KEY);
+            } else if (msg.getData().containsKey(UserService.RegisterTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(UserService.RegisterTask.EXCEPTION_KEY);
                 Toast.makeText(getContext(), "Failed to register because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
