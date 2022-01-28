@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
                 statusDialogFragment.show(getSupportFragmentManager(), "post-status-dialog");
             }
         });
+        presenter = new MainActivityPresenter(this);
 
         updateSelectedUserFollowingAndFollowers();
 
@@ -138,8 +139,6 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
                 }
             }
         });
-
-        presenter = new MainActivityPresenter(this);
     }
 
     @Override
@@ -155,9 +154,10 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
             logOutToast = Toast.makeText(this, "Logging Out...", Toast.LENGTH_LONG);
             logOutToast.show();
 
-            UserService.LogoutTask logoutTask = new UserService.LogoutTask(Cache.getInstance().getCurrUserAuthToken(), new LogoutHandler());
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-            executor.execute(logoutTask);
+//            UserService.LogoutTask logoutTask = new UserService.LogoutTask(Cache.getInstance().getCurrUserAuthToken(), new LogoutHandler());
+//            ExecutorService executor = Executors.newSingleThreadExecutor();
+//            executor.execute(logoutTask);
+            presenter.doLogoutTask();
 
             return true;
         } else {
@@ -259,10 +259,11 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
     public void updateSelectedUserFollowingAndFollowers() {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
-        // Get count of most recently selected user's followers.
-        FollowService.GetFollowersCountTask followersCountTask = new FollowService.GetFollowersCountTask(Cache.getInstance().getCurrUserAuthToken(),
-                selectedUser, new GetFollowersCountHandler());
-        executor.execute(followersCountTask);
+        presenter.doGetFollowersCountTask(selectedUser);
+//        // Get count of most recently selected user's followers.
+//        FollowService.GetFollowersCountTask followersCountTask = new FollowService.GetFollowersCountTask(Cache.getInstance().getCurrUserAuthToken(),
+//                selectedUser, new GetFollowersCountHandler());
+//        executor.execute(followersCountTask);
 
         // Get count of most recently selected user's followees (who they are following)
         FollowService.GetFollowingCountTask followingCountTask = new FollowService.GetFollowingCountTask(Cache.getInstance().getCurrUserAuthToken(),
@@ -282,43 +283,59 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
         }
     }
 
-    // LogoutHandler
-
-    private class LogoutHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(UserService.LogoutTask.SUCCESS_KEY);
-            if (success) {
-                logOutToast.cancel();
-                logoutUser();
-            } else if (msg.getData().containsKey(UserService.LogoutTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(UserService.LogoutTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to logout: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(UserService.LogoutTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(UserService.LogoutTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to logout because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
+    @Override
+    public void handleLogoutSuccess() {
+        logOutToast.cancel();
+        logoutUser();
     }
 
-    // GetFollowersCountHandler
-
-    private class GetFollowersCountHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(FollowService.GetFollowersCountTask.SUCCESS_KEY);
-            if (success) {
-                int count = msg.getData().getInt(FollowService.GetFollowersCountTask.COUNT_KEY);
-                followerCount.setText(getString(R.string.followerCount, String.valueOf(count)));
-            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(FollowService.GetFollowersCountTask.MESSAGE_KEY);
-                Toast.makeText(MainActivity.this, "Failed to get followers count: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowersCountTask.EXCEPTION_KEY);
-                Toast.makeText(MainActivity.this, "Failed to get followers count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
+    @Override
+    public void sendMessage(String message) {
+        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void handleFollowersCountSuccess(String s) {
+        followerCount.setText(getString(R.string.followerCount, s));
+    }
+
+//    // LogoutHandler
+//
+//    private class LogoutHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(UserService.LogoutTask.SUCCESS_KEY);
+//            if (success) {
+//                logOutToast.cancel();
+//                logoutUser();
+//            } else if (msg.getData().containsKey(UserService.LogoutTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(UserService.LogoutTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to logout: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(UserService.LogoutTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(UserService.LogoutTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to logout because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
+
+//    // GetFollowersCountHandler
+//
+//    private class GetFollowersCountHandler extends Handler {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            boolean success = msg.getData().getBoolean(FollowService.GetFollowersCountTask.SUCCESS_KEY);
+//            if (success) {
+//                int count = msg.getData().getInt(FollowService.GetFollowersCountTask.COUNT_KEY);
+//                followerCount.setText(getString(R.string.followerCount, String.valueOf(count)));
+//            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.MESSAGE_KEY)) {
+//                String message = msg.getData().getString(FollowService.GetFollowersCountTask.MESSAGE_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to get followers count: " + message, Toast.LENGTH_LONG).show();
+//            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.EXCEPTION_KEY)) {
+//                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowersCountTask.EXCEPTION_KEY);
+//                Toast.makeText(MainActivity.this, "Failed to get followers count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 
     // GetFollowingCountHandler
 

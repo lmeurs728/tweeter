@@ -25,7 +25,9 @@ public class UserService {
     }
 
     public interface Observer {
-        void handleUserSuccess(User user);
+        default void handleUserSuccess(User user) {
+            // do nothing
+        }
         void sendMessage(String message);
 
         default void handleLoginSuccess(User loggedInUser) {
@@ -33,6 +35,10 @@ public class UserService {
         }
 
         default void handleRegisterSuccess(User registeredUser) {
+            // do nothing
+        }
+
+        default void handleLogoutSuccess() {
             // do nothing
         }
     }
@@ -593,6 +599,33 @@ public class UserService {
             } else if (msg.getData().containsKey(UserService.RegisterTask.EXCEPTION_KEY)) {
                 Exception ex = (Exception) msg.getData().getSerializable(UserService.RegisterTask.EXCEPTION_KEY);
                 observer.sendMessage("Failed to register because of exception: " + ex.getMessage());
+            }
+        }
+    }
+
+    public void doLogoutTask() {
+        UserService.LogoutTask logoutTask = new UserService.LogoutTask(Cache.getInstance().getCurrUserAuthToken(), new LogoutHandler());
+        BackgroundTaskUtils.runTask(logoutTask);
+    }
+
+    // LogoutHandler
+
+    private class LogoutHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(UserService.LogoutTask.SUCCESS_KEY);
+            if (success) {
+                observer.handleLogoutSuccess();
+//                logOutToast.cancel();
+//                logoutUser();
+            } else if (msg.getData().containsKey(UserService.LogoutTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(UserService.LogoutTask.MESSAGE_KEY);
+                observer.sendMessage("Failed to logout: " + message);
+//                Toast.makeText(MainActivity.this, "Failed to logout: " + message, Toast.LENGTH_LONG).show();
+            } else if (msg.getData().containsKey(UserService.LogoutTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(UserService.LogoutTask.EXCEPTION_KEY);
+                observer.sendMessage("Failed to logout because of exception: " + ex.getMessage());
+//                Toast.makeText(MainActivity.this, "Failed to logout because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -15,6 +15,9 @@ import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import edu.byu.cs.client.R;
+import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.util.FakeData;
@@ -32,9 +35,10 @@ public class FollowService {
      * asynchronous operations complete.
      */
     public interface Observer {
-        void handleSuccess(List<User> followees, boolean hasMorePages);
+        default void handleSuccess(List<User> followees, boolean hasMorePages){}
         void handleFailure(String message);
-        void handleException(Exception exception);
+        default void handleException(Exception exception){}
+        default void handleFollowersCountSuccess(String s){}
     }
 
     /**
@@ -679,6 +683,34 @@ public class FollowService {
             msg.setData(msgBundle);
 
             messageHandler.sendMessage(msg);
+        }
+    }
+
+    public void doGetFollowersCountTask(User selectedUser) {
+        FollowService.GetFollowersCountTask followersCountTask = new FollowService.GetFollowersCountTask(Cache.getInstance().getCurrUserAuthToken(),
+                selectedUser, new GetFollowersCountHandler());
+        BackgroundTaskUtils.runTask(followersCountTask);
+    }
+
+    // GetFollowersCountHandler
+
+    private class GetFollowersCountHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            boolean success = msg.getData().getBoolean(FollowService.GetFollowersCountTask.SUCCESS_KEY);
+            if (success) {
+                int count = msg.getData().getInt(FollowService.GetFollowersCountTask.COUNT_KEY);
+                observer.handleFollowersCountSuccess(String.valueOf(count));
+//                followerCount.setText(getString(R.string.followerCount, String.valueOf(count)));
+            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.MESSAGE_KEY)) {
+                String message = msg.getData().getString(FollowService.GetFollowersCountTask.MESSAGE_KEY);
+                observer.handleFailure("Failed to get followers count: " + message);
+//                Toast.makeText(MainActivity.this, "Failed to get followers count: " + message, Toast.LENGTH_LONG).show();
+            } else if (msg.getData().containsKey(FollowService.GetFollowersCountTask.EXCEPTION_KEY)) {
+                Exception ex = (Exception) msg.getData().getSerializable(FollowService.GetFollowersCountTask.EXCEPTION_KEY);
+                observer.handleFailure("Failed to get followers count because of exception: " + ex.getMessage());
+//                Toast.makeText(MainActivity.this, "Failed to get followers count because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
