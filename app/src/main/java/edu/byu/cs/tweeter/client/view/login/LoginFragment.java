@@ -19,8 +19,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.backgroundTask.LoginTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.LoginTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.presenter.LoginPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
@@ -28,13 +29,15 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * Implements the login screen.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements LoginPresenter.View {
     private static final String LOG_TAG = "LoginFragment";
 
     private Toast loginInToast;
     private EditText alias;
     private EditText password;
     private TextView errorView;
+
+    private LoginPresenter presenter;
 
     /**
      * Creates an instance of the fragment and places the user and auth token in an arguments
@@ -79,6 +82,8 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
+        presenter = new LoginPresenter(this);
 
         return view;
     }

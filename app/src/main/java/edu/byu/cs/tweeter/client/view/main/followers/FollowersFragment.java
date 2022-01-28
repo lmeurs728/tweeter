@@ -28,16 +28,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.backgroundTask.GetFollowersTask;
-import edu.byu.cs.tweeter.client.backgroundTask.GetUserTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetFollowersTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.presenter.FollowersPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.User;
 
 /**
  * Implements the "Followers" tab.
  */
-public class FollowersFragment extends Fragment {
+public class FollowersFragment extends Fragment implements FollowersPresenter.View {
 
     private static final String LOG_TAG = "FollowersFragment";
     private static final String USER_KEY = "UserKey";
@@ -51,6 +52,7 @@ public class FollowersFragment extends Fragment {
 
     private FollowersRecyclerViewAdapter followersRecyclerViewAdapter;
 
+    private FollowersPresenter presenter;
     /**
      * Creates an instance of the fragment and places the target user in an arguments
      * bundle assigned to the fragment.
@@ -85,6 +87,8 @@ public class FollowersFragment extends Fragment {
         followersRecyclerView.setAdapter(followersRecyclerViewAdapter);
 
         followersRecyclerView.addOnScrollListener(new FollowRecyclerViewPaginationScrollListener(layoutManager));
+
+        presenter = new FollowersPresenter(this);
 
         return view;
     }

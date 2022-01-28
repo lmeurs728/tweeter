@@ -34,9 +34,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.backgroundTask.GetStoryTask;
-import edu.byu.cs.tweeter.client.backgroundTask.GetUserTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetStoryTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.presenter.StoryPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
@@ -44,7 +45,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * Implements the "Story" tab.
  */
-public class StoryFragment extends Fragment {
+public class StoryFragment extends Fragment implements StoryPresenter.View {
     private static final String LOG_TAG = "StoryFragment";
     private static final String USER_KEY = "UserKey";
 
@@ -56,6 +57,8 @@ public class StoryFragment extends Fragment {
     private User user;
 
     private StoryRecyclerViewAdapter storyRecyclerViewAdapter;
+
+    private StoryPresenter presenter;
 
     /**
      * Creates an instance of the fragment and places the target user in an arguments
@@ -91,6 +94,8 @@ public class StoryFragment extends Fragment {
         storyRecyclerView.setAdapter(storyRecyclerViewAdapter);
 
         storyRecyclerView.addOnScrollListener(new StoryRecyclerViewPaginationScrollListener(layoutManager));
+
+        presenter = new StoryPresenter(this);
 
         return view;
     }

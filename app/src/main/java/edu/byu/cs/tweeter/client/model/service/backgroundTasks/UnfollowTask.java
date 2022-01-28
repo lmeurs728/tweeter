@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.client.backgroundTask;
+package edu.byu.cs.tweeter.client.model.service.backgroundTasks;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,12 +6,13 @@ import android.os.Message;
 import android.util.Log;
 
 import edu.byu.cs.tweeter.model.domain.AuthToken;
+import edu.byu.cs.tweeter.model.domain.User;
 
 /**
- * Background task that logs out a user (i.e., ends a session).
+ * Background task that removes a following relationship between two users.
  */
-public class LogoutTask implements Runnable {
-    private static final String LOG_TAG = "LogoutTask";
+public class UnfollowTask implements Runnable {
+    private static final String LOG_TAG = "UnfollowTask";
 
     public static final String SUCCESS_KEY = "success";
     public static final String MESSAGE_KEY = "message";
@@ -19,15 +20,21 @@ public class LogoutTask implements Runnable {
 
     /**
      * Auth token for logged-in user.
+     * This user is the "follower" in the relationship.
      */
     private AuthToken authToken;
+    /**
+     * The user that is being followed.
+     */
+    private User followee;
     /**
      * Message handler that will receive task results.
      */
     private Handler messageHandler;
 
-    public LogoutTask(AuthToken authToken, Handler messageHandler) {
+    public UnfollowTask(AuthToken authToken, User followee, Handler messageHandler) {
         this.authToken = authToken;
+        this.followee = followee;
         this.messageHandler = messageHandler;
     }
 

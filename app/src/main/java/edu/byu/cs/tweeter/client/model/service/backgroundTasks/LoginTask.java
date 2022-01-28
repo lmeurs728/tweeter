@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.client.backgroundTask;
+package edu.byu.cs.tweeter.client.model.service.backgroundTasks;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,43 +7,50 @@ import android.util.Log;
 
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.util.FakeData;
+import edu.byu.cs.tweeter.util.Pair;
 
 /**
- * Background task that queries how many followers a user has.
+ * Background task that logs in a user (i.e., starts a session).
  */
-public class GetFollowersCountTask implements Runnable {
-    private static final String LOG_TAG = "GetFollowersCountTask";
+public class LoginTask implements Runnable {
+
+    private static final String LOG_TAG = "LoginTask";
 
     public static final String SUCCESS_KEY = "success";
-    public static final String COUNT_KEY = "count";
+    public static final String USER_KEY = "user";
+    public static final String AUTH_TOKEN_KEY = "auth-token";
     public static final String MESSAGE_KEY = "message";
     public static final String EXCEPTION_KEY = "exception";
 
     /**
-     * Auth token for logged-in user.
+     * The user's username (or "alias" or "handle"). E.g., "@susan".
      */
-    private AuthToken authToken;
+    private String username;
     /**
-     * The user whose follower count is being retrieved.
-     * (This can be any user, not just the currently logged-in user.)
+     * The user's password.
      */
-    private User targetUser;
+    private String password;
     /**
      * Message handler that will receive task results.
      */
     private Handler messageHandler;
 
-    public GetFollowersCountTask(AuthToken authToken, User targetUser, Handler messageHandler) {
-        this.authToken = authToken;
-        this.targetUser = targetUser;
+    public LoginTask(String username, String password, Handler messageHandler) {
+        this.username = username;
+        this.password = password;
         this.messageHandler = messageHandler;
     }
 
     @Override
     public void run() {
         try {
+            Pair<User, AuthToken> loginResult = doLogin();
 
-            sendSuccessMessage(20);
+            User loggedInUser = loginResult.getFirst();
+            AuthToken authToken = loginResult.getSecond();
+
+            sendSuccessMessage(loggedInUser, authToken);
 
         } catch (Exception ex) {
             Log.e(LOG_TAG, ex.getMessage(), ex);
@@ -51,10 +58,21 @@ public class GetFollowersCountTask implements Runnable {
         }
     }
 
-    private void sendSuccessMessage(int count) {
+    private FakeData getFakeData() {
+        return new FakeData();
+    }
+
+    private Pair<User, AuthToken> doLogin() {
+        User loggedInUser = getFakeData().getFirstUser();
+        AuthToken authToken = getFakeData().getAuthToken();
+        return new Pair<>(loggedInUser, authToken);
+    }
+
+    private void sendSuccessMessage(User loggedInUser, AuthToken authToken) {
         Bundle msgBundle = new Bundle();
         msgBundle.putBoolean(SUCCESS_KEY, true);
-        msgBundle.putInt(COUNT_KEY, count);
+        msgBundle.putSerializable(USER_KEY, loggedInUser);
+        msgBundle.putSerializable(AUTH_TOKEN_KEY, authToken);
 
         Message msg = Message.obtain();
         msg.setData(msgBundle);

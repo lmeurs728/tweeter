@@ -32,14 +32,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-import edu.byu.cs.tweeter.client.backgroundTask.FollowTask;
-import edu.byu.cs.tweeter.client.backgroundTask.GetFollowersCountTask;
-import edu.byu.cs.tweeter.client.backgroundTask.GetFollowingCountTask;
-import edu.byu.cs.tweeter.client.backgroundTask.IsFollowerTask;
-import edu.byu.cs.tweeter.client.backgroundTask.LogoutTask;
-import edu.byu.cs.tweeter.client.backgroundTask.PostStatusTask;
-import edu.byu.cs.tweeter.client.backgroundTask.UnfollowTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.FollowTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetFollowersCountTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetFollowingCountTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.IsFollowerTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.LogoutTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.PostStatusTask;
+import edu.byu.cs.tweeter.client.model.service.backgroundTasks.UnfollowTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+import edu.byu.cs.tweeter.client.presenter.MainActivityPresenter;
 import edu.byu.cs.tweeter.client.view.login.LoginActivity;
 import edu.byu.cs.tweeter.client.view.login.StatusDialogFragment;
 import edu.byu.cs.tweeter.model.domain.Status;
@@ -48,7 +49,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * The main activity for the application. Contains tabs for feed, story, following, and followers.
  */
-public class MainActivity extends AppCompatActivity implements StatusDialogFragment.Observer {
+public class MainActivity extends AppCompatActivity implements StatusDialogFragment.Observer, MainActivityPresenter.View {
 
     private static final String LOG_TAG = "MainActivity";
 
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
     private TextView followeeCount;
     private TextView followerCount;
     private Button followButton;
+
+    private MainActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
                 }
             }
         });
+
+        presenter = new MainActivityPresenter(this);
     }
 
     @Override
