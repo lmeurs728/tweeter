@@ -59,27 +59,19 @@ public class LoginFragment extends Fragment implements LoginPresenter.View {
         password = view.findViewById(R.id.loginPassword);
         errorView = view.findViewById(R.id.loginError);
         Button loginButton = view.findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(view1 -> {
+            // Login and move to MainActivity.
+            try {
+                validateLogin();
+                errorView.setText(null);
 
-            @Override
-            public void onClick(View view) {
-                // Login and move to MainActivity.
-                try {
-                    validateLogin();
-                    errorView.setText(null);
+                loginInToast = Toast.makeText(getContext(), "Logging In...", Toast.LENGTH_LONG);
+                loginInToast.show();
 
-                    loginInToast = Toast.makeText(getContext(), "Logging In...", Toast.LENGTH_LONG);
-                    loginInToast.show();
-
-                    // Send the login request.
-                    LoginTask loginTask = new LoginTask(alias.getText().toString(),
-                            password.getText().toString(),
-                            new LoginHandler());
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(loginTask);
-                } catch (Exception e) {
-                    errorView.setText(e.getMessage());
-                }
+                // Send the login request.
+                presenter.login(alias, password);
+            } catch (Exception e) {
+                errorView.setText(e.getMessage());
             }
         });
 
@@ -100,36 +92,26 @@ public class LoginFragment extends Fragment implements LoginPresenter.View {
         }
     }
 
-    /**
-     * Message handler (i.e., observer) for LoginTask
-     */
-    private class LoginHandler extends Handler {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            boolean success = msg.getData().getBoolean(LoginTask.SUCCESS_KEY);
-            if (success) {
-                User loggedInUser = (User) msg.getData().getSerializable(LoginTask.USER_KEY);
-                AuthToken authToken = (AuthToken) msg.getData().getSerializable(LoginTask.AUTH_TOKEN_KEY);
-
-                // Cache user session information
-                Cache.getInstance().setCurrUser(loggedInUser);
-                Cache.getInstance().setCurrUserAuthToken(authToken);
-
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.putExtra(MainActivity.CURRENT_USER_KEY, loggedInUser);
-
-                loginInToast.cancel();
-
-                Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
-                startActivity(intent);
-            } else if (msg.getData().containsKey(LoginTask.MESSAGE_KEY)) {
-                String message = msg.getData().getString(LoginTask.MESSAGE_KEY);
-                Toast.makeText(getContext(), "Failed to login: " + message, Toast.LENGTH_LONG).show();
-            } else if (msg.getData().containsKey(LoginTask.EXCEPTION_KEY)) {
-                Exception ex = (Exception) msg.getData().getSerializable(LoginTask.EXCEPTION_KEY);
-                Toast.makeText(getContext(), "Failed to login because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
+    @Override
+    public void displayMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void startActivity(User user) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void loginSuccess(User loggedInUser) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, loggedInUser);
+
+        loginInToast.cancel();
+
+        Toast.makeText(getContext(), "Hello " + Cache.getInstance().getCurrUser().getName(), Toast.LENGTH_LONG).show();
+        startActivity(intent);
+    }
 }

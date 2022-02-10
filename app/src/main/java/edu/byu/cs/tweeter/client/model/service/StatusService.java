@@ -1,10 +1,5 @@
 package edu.byu.cs.tweeter.client.model.service;
 
-<<<<<<< Updated upstream
-public class StatusService {
-
-
-=======
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -217,5 +212,4 @@ public class StatusService {
             observer.addStatuses(statuses, hasMorePages);
         }
     }
->>>>>>> Stashed changes
 }

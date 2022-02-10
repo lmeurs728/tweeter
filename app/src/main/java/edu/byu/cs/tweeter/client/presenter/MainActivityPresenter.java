@@ -1,8 +1,5 @@
 package edu.byu.cs.tweeter.client.presenter;
 
-<<<<<<< Updated upstream
-public class MainActivityPresenter {
-=======
 import edu.byu.cs.tweeter.client.model.service.FollowService;
 import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.model.domain.Status;
@@ -78,9 +75,20 @@ public class MainActivityPresenter implements UserService.Observer, FollowServic
         new FollowService(this).doPostStatusTask();
     }
 
->>>>>>> Stashed changes
-    public interface View {
+    public void doLogoutTask() {
+        new UserService(this).doLogoutTask();
+    }
 
+    public interface View {
+        void handleFollowingCountSuccess(String s);
+        void handlePostStatusSuccess();
+        void enableFollowButton();
+        void sendMessage(String message);
+        void handleUnfollowSuccess();
+        void handleFollowSuccess();
+        void handleFollowersCountSuccess(String s);
+        void handleLogoutSuccess();
+        void handleIsFollowerSuccess(boolean isFollower);
     }
 
     private View view;

@@ -45,7 +45,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * Implements the "Feed" tab.
  */
-public class FeedFragment extends Fragment implements PagedPresenter.PagedView<Status> {
+public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
     private static final String LOG_TAG = "FeedFragment";
     private static final String USER_KEY = "UserKey";
 
@@ -112,14 +112,21 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView<S
         startActivity(intent);
     }
 
-<<<<<<< Updated upstream
-=======
     @Override
-    public void addItems(List<Status> items) {
+    public void setLoading(boolean value) {
+        if (value) {
+            feedRecyclerViewAdapter.addLoadingFooter();
+        }
+        else {
+            feedRecyclerViewAdapter.removeLoadingFooter();
+        }
+    }
+
+    @Override
+    public void addItems(List items) {
         feedRecyclerViewAdapter.addItems(items);
     }
 
->>>>>>> Stashed changes
     /**
      * The ViewHolder for the RecyclerView that displays the feed data.
      */

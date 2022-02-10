@@ -1,9 +1,14 @@
 package edu.byu.cs.tweeter.client.presenter;
 
-public class LoginPresenter {
+import android.widget.EditText;
 
-    public interface View {
+import edu.byu.cs.tweeter.client.model.service.UserService;
+import edu.byu.cs.tweeter.model.domain.User;
 
+public class LoginPresenter implements UserService.Observer {
+
+    public interface View extends BasePresenter.BaseView {
+        void loginSuccess(User loggedInUser);
     }
 
     private View view;
@@ -11,12 +16,10 @@ public class LoginPresenter {
     public LoginPresenter(View view) {
         this.view = view;
     }
-<<<<<<< Updated upstream
-=======
 
     @Override
     public void sendMessage(String message) {
-        view.sendMessage(message);
+        view.displayMessage(message);
     }
 
     @Override
@@ -36,5 +39,4 @@ public class LoginPresenter {
     public void doLoginTask(String alias, String password) {
         new UserService(this).login(alias, password);
     }
->>>>>>> Stashed changes
 }

@@ -34,13 +34,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
-<<<<<<< Updated upstream
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetStoryTask;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
-import edu.byu.cs.tweeter.client.cache.Cache;
-=======
 import edu.byu.cs.tweeter.client.presenter.PagedPresenter;
->>>>>>> Stashed changes
 import edu.byu.cs.tweeter.client.presenter.StoryPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.Status;
@@ -86,6 +80,8 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_story, container, false);
 
+        presenter = new StoryPresenter(this);
+
         //noinspection ConstantConditions
         user = (User) getArguments().getSerializable(USER_KEY);
 
@@ -99,21 +95,20 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
 
         storyRecyclerView.addOnScrollListener(new StoryRecyclerViewPaginationScrollListener(layoutManager));
 
-<<<<<<< Updated upstream
-        presenter = new StoryPresenter(this);
-=======
         presenter.doServiceMethod();
         presenter.loadMoreItems();
->>>>>>> Stashed changes
-
         return view;
     }
 
-<<<<<<< Updated upstream
-=======
     @Override
     public void setLoading(boolean b) {
-        storyRecyclerViewAdapter.setLoading(b);
+        if (b) {
+            storyRecyclerViewAdapter.addLoadingFooter();
+        }
+        else {
+            storyRecyclerViewAdapter.removeLoadingFooter();
+        }
+
     }
 
     @Override
@@ -133,7 +128,6 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
         storyRecyclerViewAdapter.addItems(items);
     }
 
->>>>>>> Stashed changes
     /**
      * The ViewHolder for the RecyclerView that displays the story data.
      */
@@ -162,10 +156,7 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    GetUserTask getUserTask = new GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
-                            userAlias.getText().toString(), new GetUserHandler());
-                    ExecutorService executor = Executors.newSingleThreadExecutor();
-                    executor.execute(getUserTask);
+                    presenter.getUsersProfile(userAlias.toString());
                     Toast.makeText(getContext(), "Getting user's profile...", Toast.LENGTH_LONG).show();
                 }
             });
@@ -202,10 +193,7 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
                             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(clickable));
                             startActivity(intent);
                         } else {
-                            GetUserTask getUserTask = new GetUserTask(Cache.getInstance().getCurrUserAuthToken(),
-                                    clickable, new GetUserHandler());
-                            ExecutorService executor = Executors.newSingleThreadExecutor();
-                            executor.execute(getUserTask);
+                            presenter.getUsersProfile(clickable);
                             Toast.makeText(getContext(), "Getting user's profile...", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -232,28 +220,7 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
             post.setMovementMethod(LinkMovementMethod.getInstance());
         }
 
-        /**
-         * Message handler (i.e., observer) for GetUserTask.
-         */
-        private class GetUserHandler extends Handler {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                boolean success = msg.getData().getBoolean(GetUserTask.SUCCESS_KEY);
-                if (success) {
-                    User user = (User) msg.getData().getSerializable(GetUserTask.USER_KEY);
 
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
-                    startActivity(intent);
-                } else if (msg.getData().containsKey(GetUserTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(GetUserTask.MESSAGE_KEY);
-                    Toast.makeText(getContext(), "Failed to get user's profile: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(GetUserTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(GetUserTask.EXCEPTION_KEY);
-                    Toast.makeText(getContext(), "Failed to get user's profile because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        }
     }
 
     /**
@@ -375,15 +342,12 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
          * data.
          */
         void loadMoreItems() {
-            if (!isLoading) {   // This guard is important for avoiding a race condition in the scrolling code.
-                isLoading = true;
-                addLoadingFooter();
+//            if (!isLoading) {   // This guard is important for avoiding a race condition in the scrolling code.
+//                isLoading = true;
+//                addLoadingFooter();
 
-                GetStoryTask getStoryTask = new GetStoryTask(Cache.getInstance().getCurrUserAuthToken(),
-                        user, PAGE_SIZE, lastStatus, new GetStoryHandler());
-                ExecutorService executor = Executors.newSingleThreadExecutor();
-                executor.execute(getStoryTask);
-            }
+                presenter.loadMoreItems();
+//            }
         }
 
         /**
@@ -404,34 +368,6 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
          */
         private void removeLoadingFooter() {
             removeItem(story.get(story.size() - 1));
-        }
-
-
-        /**
-         * Message handler (i.e., observer) for GetStoryTask.
-         */
-        private class GetStoryHandler extends Handler {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-                isLoading = false;
-                removeLoadingFooter();
-
-                boolean success = msg.getData().getBoolean(GetStoryTask.SUCCESS_KEY);
-                if (success) {
-                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(GetStoryTask.STATUSES_KEY);
-                    hasMorePages = msg.getData().getBoolean(GetStoryTask.MORE_PAGES_KEY);
-
-                    lastStatus = (statuses.size() > 0) ? statuses.get(statuses.size() - 1) : null;
-
-                    storyRecyclerViewAdapter.addItems(statuses);
-                } else if (msg.getData().containsKey(GetStoryTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(GetStoryTask.MESSAGE_KEY);
-                    Toast.makeText(getContext(), "Failed to get story: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(GetStoryTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(GetStoryTask.EXCEPTION_KEY);
-                    Toast.makeText(getContext(), "Failed to get story because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
         }
     }
 

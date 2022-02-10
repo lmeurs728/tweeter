@@ -3,22 +3,12 @@ package edu.byu.cs.tweeter.client.model.service;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-<<<<<<< Updated upstream
-import android.util.Log;
-=======
 
-import androidx.annotation.NonNull;
->>>>>>> Stashed changes
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
 
-<<<<<<< Updated upstream
-=======
 import edu.byu.cs.tweeter.client.cache.Cache;
->>>>>>> Stashed changes
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.util.FakeData;
@@ -31,8 +21,6 @@ public class FollowService {
 
     private final Observer followObserver;
 
-<<<<<<< Updated upstream
-=======
     public void doFollowTask() {
         FollowService.FollowTask followTask = new FollowService.FollowTask(
                 new FollowHandler());
@@ -51,17 +39,10 @@ public class FollowService {
         BackgroundTaskUtils.runTask(statusTask);
     }
 
->>>>>>> Stashed changes
     /**
      * An observer interface to be implemented by observers who want to be notified when
      * asynchronous operations complete.
      */
-<<<<<<< Updated upstream
-    public interface Observer {
-        void handleSuccess(List<User> followees, boolean hasMorePages);
-        void handleFailure(String message);
-        void handleException(Exception exception);
-=======
     public interface Observer extends BaseObserver {
         default void handleFollowersCountSuccess(String s){}
         default void handleFollowingCountSuccess(String s){}
@@ -71,7 +52,6 @@ public class FollowService {
         default void handleUnfollowSuccess(){}
         default void handlePostStatusSuccess() {}
         default void addFollows(List<User> items, boolean hasMorePages) {}
->>>>>>> Stashed changes
     }
 
     /**
@@ -104,14 +84,11 @@ public class FollowService {
         BackgroundTaskUtils.runTask(followingTask);
     }
 
-<<<<<<< Updated upstream
-=======
     public void getFollowers(AuthToken authToken, User targetUser, int limit, User lastFollower) {
         GetFollowersTask getFollowersTask = getGetFollowersTask(targetUser, limit, lastFollower);
         BackgroundTaskUtils.runTask(getFollowersTask);
     }
 
->>>>>>> Stashed changes
     /**
      * Returns an instance of {@link GetFollowingTask}. Allows mocking of the
      * GetFollowingTask class for testing purposes. All usages of GetFollowingTask
@@ -125,9 +102,6 @@ public class FollowService {
                 new GetFollowingHandler(Looper.getMainLooper(), followObserver));
     }
 
-<<<<<<< Updated upstream
-    public static class MessageHandler extends Handler {
-=======
     public GetFollowersTask getGetFollowersTask(User targetUser, int limit, User lastFollower) {
         return new GetFollowersTask(targetUser, limit, lastFollower,
                 new GetFollowersHandler(Looper.getMainLooper(), followObserver));
@@ -137,7 +111,6 @@ public class FollowService {
      * Message handler (i.e., observer) for GetFollowersTask.
      */
     private static class GetFollowingHandler extends BaseHandler {
->>>>>>> Stashed changes
         private final Observer observer;
 
         public GetFollowingHandler(Looper looper, Observer observer) {
@@ -155,8 +128,6 @@ public class FollowService {
     }
 
     /**
-<<<<<<< Updated upstream
-=======
      * Message handler (i.e., observer) for GetFollowersTask.
      */
     private static class GetFollowersHandler extends BaseHandler {
@@ -177,7 +148,6 @@ public class FollowService {
     }
 
     /**
->>>>>>> Stashed changes
      * Background task that retrieves a page of other users being followed by a specified user.
      */
     public static class GetFollowingTask extends BackgroundTask {
@@ -231,8 +201,6 @@ public class FollowService {
             return getFakeData().getPageOfUsers(lastFollowee, limit, targetUser);
         }
     }
-<<<<<<< Updated upstream
-=======
 
     /**
      * Background task that queries how many followers a user has.
@@ -465,5 +433,4 @@ public class FollowService {
         }
     }
 
->>>>>>> Stashed changes
 }

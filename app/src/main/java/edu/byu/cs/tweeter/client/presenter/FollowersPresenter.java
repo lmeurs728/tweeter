@@ -1,17 +1,5 @@
 package edu.byu.cs.tweeter.client.presenter;
 
-<<<<<<< Updated upstream
-public class FollowersPresenter {
-
-    public interface View {
-
-    }
-
-    private View view;
-
-    public FollowersPresenter(View view) {
-        this.view = view;
-=======
 import java.util.List;
 
 import edu.byu.cs.tweeter.client.cache.Cache;
@@ -35,6 +23,6 @@ public class FollowersPresenter extends PagedPresenter<User> implements UserServ
     public void addFollows(List<User> items, boolean hasMorePages) {
         setLastItemAndHasMorePages(items, hasMorePages);
         view.addItems(items);
->>>>>>> Stashed changes
+
     }
 }

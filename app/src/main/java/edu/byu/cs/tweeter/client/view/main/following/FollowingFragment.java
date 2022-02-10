@@ -100,18 +100,8 @@ public class FollowingFragment extends Fragment implements PagedPresenter.PagedV
         followingRecyclerViewAdapter.addItems(newUsers);
     }
 
-<<<<<<< Updated upstream
-    /**
-     * Directs the view to display the specified error message to the user.
-     *
-     * @param message error message to be displayed.
-     */
-    @Override
-    public void displayErrorMessage(String message) {
-=======
     @Override
     public void displayMessage(String message) {
->>>>>>> Stashed changes
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 

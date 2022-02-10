@@ -1,0 +1,128 @@
+Index: app/src/main/java/edu/byu/cs/tweeter/client/model/service/UserService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/byu/cs/tweeter/client/model/service/UserService.java b/app/src/main/java/edu/byu/cs/tweeter/client/model/service/UserService.java
+--- a/app/src/main/java/edu/byu/cs/tweeter/client/model/service/UserService.java	(date 1644535640653)
++++ b/app/src/main/java/edu/byu/cs/tweeter/client/model/service/UserService.java	(date 1644535640653)
+@@ -1,44 +1,10 @@
+ package edu.byu.cs.tweeter.client.model.service;
+ 
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-import android.content.Intent;
+-import android.os.Handler;
+-import android.os.Message;
+-import android.widget.Toast;
+-=======
+-=======
+-
+->>>>>>> Stashed changes
+-=======
+ 
+->>>>>>> Stashed changes
+-import android.os.Bundle;
+-import android.os.Handler;
+-
+-import edu.byu.cs.tweeter.client.cache.Cache;
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
+-import edu.byu.cs.tweeter.client.presenter.FeedPresenter;
+-import edu.byu.cs.tweeter.client.view.main.MainActivity;
+-=======
+->>>>>>> Stashed changes
+-=======
+ import android.os.Bundle;
+ import android.os.Handler;
+ 
+-import java.util.List;
+-
+ import edu.byu.cs.tweeter.client.cache.Cache;
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+ import edu.byu.cs.tweeter.model.domain.AuthToken;
+ import edu.byu.cs.tweeter.model.domain.User;
+ import edu.byu.cs.tweeter.util.FakeData;
+@@ -52,37 +18,12 @@
+         this.observer = observer;
+     }
+ 
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-    public interface Observer {
+-        void handleSuccess(User user);
+-        void sendMessage(String message);
+-=======
+-=======
+->>>>>>> Stashed changes
+-=======
+ 
+->>>>>>> Stashed changes
+-=======
+-
+->>>>>>> Stashed changes
+     public interface Observer extends BaseObserver {
+         default void handleUserSuccess(User user) {}
+         default void handleLoginSuccess(User loggedInUser) {}
+         default void handleRegisterSuccess(User registeredUser) {}
+         default void handleLogoutSuccess() {}
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+     }
+ 
+     public void getUser(String clickable) {
+@@ -104,36 +45,6 @@
+         }
+ 
+         @Override
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-<<<<<<< Updated upstream
+-        public void handleMessage(@NonNull Message msg) {
+-            boolean success = msg.getData().getBoolean(GetUserTask.SUCCESS_KEY);
+-            if (success) {
+-                User user = (User) msg.getData().getSerializable(GetUserTask.USER_KEY);
+-                observer.handleSuccess(user);
+-            }
+-            else if (msg.getData().containsKey(GetUserTask.MESSAGE_KEY)) {
+-                String message = msg.getData().getString(GetUserTask.MESSAGE_KEY);
+-                observer.sendMessage("Failed to get user's profile: " + message);
+-            }
+-            else if (msg.getData().containsKey(GetUserTask.EXCEPTION_KEY)) {
+-                Exception ex = (Exception) msg.getData().getSerializable(GetUserTask.EXCEPTION_KEY);
+-                observer.sendMessage("Failed to get user's profile because of exception: " + ex.getMessage());
+-            }
+-=======
+-        protected void onSuccess(Bundle bundle) {
+-            User user = (User) bundle.getSerializable(GetUserTask.USER_KEY);
+-            observer.handleUserSuccess(user);
+->>>>>>> Stashed changes
+-        }
+-    }
+-=======
+-=======
+->>>>>>> Stashed changes
+-=======
+->>>>>>> Stashed changes
+         protected void onSuccess(Bundle bundle) {
+             User user = (User) bundle.getSerializable(GetUserTask.USER_KEY);
+             observer.handleUserSuccess(user);
