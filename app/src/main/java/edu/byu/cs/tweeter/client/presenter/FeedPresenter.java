@@ -1,5 +1,6 @@
 package edu.byu.cs.tweeter.client.presenter;
 
+<<<<<<< Updated upstream
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutorService;
@@ -41,4 +42,26 @@ public class FeedPresenter implements UserService.Observer {
 
 
 
+=======
+import java.util.List;
+
+import edu.byu.cs.tweeter.client.model.service.StatusService;
+import edu.byu.cs.tweeter.model.domain.Status;
+
+public class FeedPresenter extends PagedPresenter<Status> implements StatusService.Observer {
+    public FeedPresenter(PagedView<Status> view) {
+        super(view);
+    }
+
+    @Override
+    public void doServiceMethod() {
+        new StatusService(this).doGetFeedTask(PAGE_SIZE, lastItem);
+    }
+
+    @Override
+    public void addStatuses(List<Status> items, boolean hasMorePages) {
+        setLastItemAndHasMorePages(items, hasMorePages);
+        view.addItems(items);
+    }
+>>>>>>> Stashed changes
 }

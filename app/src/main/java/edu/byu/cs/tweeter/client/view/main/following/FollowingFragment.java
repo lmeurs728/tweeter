@@ -30,6 +30,7 @@ import edu.byu.cs.client.R;
 import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.client.presenter.FollowingPresenter;
+import edu.byu.cs.tweeter.client.presenter.PagedPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
@@ -37,7 +38,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * The fragment that displays on the 'Following' tab.
  */
-public class FollowingFragment extends Fragment implements FollowingPresenter.View {
+public class FollowingFragment extends Fragment implements PagedPresenter.PagedView<User> {
 
     private static final String LOG_TAG = "FollowingFragment";
     private static final String USER_KEY = "UserKey";
@@ -82,6 +83,13 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
     }
 
 
+    @Override
+    public void startActivity(User user) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
+        startActivity(intent);
+    }
+
     /**
      * Called to pass "following" users to the view when they are loaded.
      *
@@ -92,6 +100,7 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
         followingRecyclerViewAdapter.addItems(newUsers);
     }
 
+<<<<<<< Updated upstream
     /**
      * Directs the view to display the specified error message to the user.
      *
@@ -99,6 +108,10 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
      */
     @Override
     public void displayErrorMessage(String message) {
+=======
+    @Override
+    public void displayMessage(String message) {
+>>>>>>> Stashed changes
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
@@ -111,7 +124,7 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
 
         AuthToken authToken = Cache.getInstance().getCurrUserAuthToken();
 
-        presenter = new FollowingPresenter(this, user, authToken);
+        presenter = new FollowingPresenter(this);
 
         RecyclerView followingRecyclerView = view.findViewById(R.id.followingRecyclerView);
 

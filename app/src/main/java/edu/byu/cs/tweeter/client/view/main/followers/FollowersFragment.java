@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,21 +23,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
+<<<<<<< Updated upstream
 import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetFollowersTask;
 import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+=======
+>>>>>>> Stashed changes
 import edu.byu.cs.tweeter.client.presenter.FollowersPresenter;
+import edu.byu.cs.tweeter.client.presenter.PagedPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.User;
 
 /**
  * Implements the "Followers" tab.
  */
-public class FollowersFragment extends Fragment implements FollowersPresenter.View {
+public class FollowersFragment extends Fragment implements PagedPresenter.PagedView<User> {
 
     private static final String LOG_TAG = "FollowersFragment";
     private static final String USER_KEY = "UserKey";
@@ -76,7 +77,13 @@ public class FollowersFragment extends Fragment implements FollowersPresenter.Vi
         View view = inflater.inflate(R.layout.fragment_followers, container, false);
 
         //noinspection ConstantConditions
+<<<<<<< Updated upstream
         user = (User) getArguments().getSerializable(USER_KEY);
+=======
+        User user = (User) getArguments().getSerializable(USER_KEY);
+
+        presenter = new FollowersPresenter(this);
+>>>>>>> Stashed changes
 
         RecyclerView followersRecyclerView = view.findViewById(R.id.followersRecyclerView);
 
@@ -93,6 +100,31 @@ public class FollowersFragment extends Fragment implements FollowersPresenter.Vi
         return view;
     }
 
+<<<<<<< Updated upstream
+=======
+    @Override
+    public void setLoading(boolean value) {
+        followersRecyclerViewAdapter.setLoading(value);
+    }
+
+    @Override
+    public void addItems(List<User> newUsers) {
+        followersRecyclerViewAdapter.addItems(newUsers);
+    }
+
+    @Override
+    public void startActivity(User user) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void displayMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+>>>>>>> Stashed changes
     /**
      * The ViewHolder for the RecyclerView that displays the follower data.
      */
@@ -375,6 +407,7 @@ public class FollowersFragment extends Fragment implements FollowersPresenter.Vi
             int totalItemCount = layoutManager.getItemCount();
             int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
 
+<<<<<<< Updated upstream
             if (!followersRecyclerViewAdapter.isLoading && followersRecyclerViewAdapter.hasMorePages) {
                 if ((visibleItemCount + firstVisibleItemPosition) >=
                         totalItemCount && firstVisibleItemPosition >= 0) {
@@ -384,6 +417,13 @@ public class FollowersFragment extends Fragment implements FollowersPresenter.Vi
                         followersRecyclerViewAdapter.loadMoreItems();
                     }, 0);
                 }
+=======
+            if ((visibleItemCount + firstVisibleItemPosition) >=
+                    totalItemCount && firstVisibleItemPosition >= 0) {
+                // Run this code later on the UI thread
+                final Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(() -> presenter.loadMoreItems(), 0);
+>>>>>>> Stashed changes
             }
         }
     }

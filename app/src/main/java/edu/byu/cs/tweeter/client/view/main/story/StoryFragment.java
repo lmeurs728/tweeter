@@ -34,9 +34,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.client.R;
+<<<<<<< Updated upstream
 import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetStoryTask;
 import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetUserTask;
 import edu.byu.cs.tweeter.client.cache.Cache;
+=======
+import edu.byu.cs.tweeter.client.presenter.PagedPresenter;
+>>>>>>> Stashed changes
 import edu.byu.cs.tweeter.client.presenter.StoryPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
 import edu.byu.cs.tweeter.model.domain.Status;
@@ -45,7 +49,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 /**
  * Implements the "Story" tab.
  */
-public class StoryFragment extends Fragment implements StoryPresenter.View {
+public class StoryFragment extends Fragment implements PagedPresenter.PagedView<Status> {
     private static final String LOG_TAG = "StoryFragment";
     private static final String USER_KEY = "UserKey";
 
@@ -95,11 +99,41 @@ public class StoryFragment extends Fragment implements StoryPresenter.View {
 
         storyRecyclerView.addOnScrollListener(new StoryRecyclerViewPaginationScrollListener(layoutManager));
 
+<<<<<<< Updated upstream
         presenter = new StoryPresenter(this);
+=======
+        presenter.doServiceMethod();
+        presenter.loadMoreItems();
+>>>>>>> Stashed changes
 
         return view;
     }
 
+<<<<<<< Updated upstream
+=======
+    @Override
+    public void setLoading(boolean b) {
+        storyRecyclerViewAdapter.setLoading(b);
+    }
+
+    @Override
+    public void displayMessage(String s) {
+        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void startActivity(User user) {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra(MainActivity.CURRENT_USER_KEY, user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void addItems(List<Status> items) {
+        storyRecyclerViewAdapter.addItems(items);
+    }
+
+>>>>>>> Stashed changes
     /**
      * The ViewHolder for the RecyclerView that displays the story data.
      */

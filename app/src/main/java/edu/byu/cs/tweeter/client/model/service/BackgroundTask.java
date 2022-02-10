@@ -11,7 +11,7 @@ public abstract class BackgroundTask implements Runnable {
         void load(Bundle msgBundle);
     }
 
-    private static final String LOG_TAG = "Task";
+    protected static final String LOG_TAG = "Task";
 
     public static final String SUCCESS_KEY = "success";
     public static final String MESSAGE_KEY = "message";

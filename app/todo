@@ -1,0 +1,7 @@
+story, feed, follower and following tasks should inherit from a getPagedData class
+Also get rid of duplicate definitions like getFakeData()
+GetFollowerCount and getFollowingCount inherit from a getFollowCount class
+Status and users handlers can inherit from a base class
+Generic types with the observers
+Presenters have a view
+PagedPresenters extend a pagedPresenter class and their views extend a pagedView class
