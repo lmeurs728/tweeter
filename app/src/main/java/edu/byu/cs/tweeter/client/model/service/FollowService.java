@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
 import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
-import edu.byu.cs.tweeter.util.FakeData;
 import edu.byu.cs.tweeter.util.Pair;
 
 /**
@@ -121,7 +119,7 @@ public class FollowService {
 
         @Override
         protected void onSuccess(Bundle bundle) {
-            List<User> followees = (List<User>) bundle.getSerializable(GetFollowingTask.FOLLOWEES_KEY);
+            List<User> followees = (List<User>) bundle.getSerializable(GetFollowingTask.ITEMS_KEY);
             boolean hasMorePages = bundle.getBoolean(GetFollowersTask.MORE_PAGES_KEY);
             observer.addFollows(followees, hasMorePages);
         }
@@ -141,64 +139,27 @@ public class FollowService {
 
         @Override
         protected void onSuccess(Bundle bundle) {
-            List<User> followers = (List<User>) bundle.getSerializable(GetFollowersTask.FOLLOWERS_KEY);
+            List<User> followers = (List<User>) bundle.getSerializable(GetFollowersTask.ITEMS_KEY);
             boolean hasMorePages = bundle.getBoolean(GetFollowersTask.MORE_PAGES_KEY);
             observer.addFollows(followers, hasMorePages);
         }
     }
 
     /**
-     * Background task that retrieves a page of other users being followed by a specified user.
+     * Background task that retrieves a page of followers.
      */
-    public static class GetFollowingTask extends BackgroundTask {
-        protected static final String LOG_TAG = "GetFollowingTask";
+    public static class GetFollowingTask extends GetItemsTask<User> {
+        protected static final String LOG_TAG = "GetFollowersTask";
+        public static final String ITEMS_KEY = "following";
 
-        public static final String FOLLOWEES_KEY = "followees";
-        public static final String MORE_PAGES_KEY = "more-pages";
-
-        /**
-         * The user whose following is being retrieved.
-         * (This can be any user, not just the currently logged-in user.)
-         */
-        private User targetUser;
-        /**
-         * Maximum number of followed users to return (i.e., page size).
-         */
-        private int limit;
-        /**
-         * The last person being followed returned in the previous page of results (can be null).
-         * This allows the new page to begin where the previous page ended.
-         */
-        private User lastFollowee;
-
-        public GetFollowingTask(User targetUser, int limit, User lastFollowee,
+        public GetFollowingTask(User targetUser, int limit, User lastFollower,
                                 Handler messageHandler) {
-            super(messageHandler);
-
-            this.targetUser = targetUser;
-            this.limit = limit;
-            this.lastFollowee = lastFollowee;
+            super(limit, lastFollower, messageHandler, targetUser);
         }
 
         @Override
-        protected void runTask() {
-            Pair<List<User>, Boolean> pageOfUsers = getFollowees();
-
-            List<User> followees = pageOfUsers.getFirst();
-            boolean hasMorePages = pageOfUsers.getSecond();
-
-            sendSuccessMessage(msgBundle -> {
-                msgBundle.putSerializable(FOLLOWEES_KEY, (Serializable) followees);
-                msgBundle.putBoolean(MORE_PAGES_KEY, hasMorePages);
-            });
-        }
-
-        private FakeData getFakeData() {
-            return new FakeData();
-        }
-
-        private Pair<List<User>, Boolean> getFollowees() {
-            return getFakeData().getPageOfUsers(lastFollowee, limit, targetUser);
+        protected Pair<List<User>, Boolean> getItems(int limit, User lastItem, User targetUser) {
+            return getFakeData().getPageOfUsers(lastItem, limit, targetUser);
         }
     }
 
@@ -222,57 +183,19 @@ public class FollowService {
     /**
      * Background task that retrieves a page of followers.
      */
-    public static class GetFollowersTask extends BackgroundTask {
+    public static class GetFollowersTask extends GetItemsTask<User> {
         protected static final String LOG_TAG = "GetFollowersTask";
-
-        public static final String FOLLOWERS_KEY = "followers";
-        public static final String MORE_PAGES_KEY = "more-pages";
-
-        /**
-         * The user whose followers are being retrieved.
-         * (This can be any user, not just the currently logged-in user.)
-         */
-        private User targetUser;
-        /**
-         * Maximum number of followers to return (i.e., page size).
-         */
-        private int limit;
-        /**
-         * The last follower returned in the previous page of results (can be null).
-         * This allows the new page to begin where the previous page ended.
-         */
-        private User lastFollower;
+        public static final String ITEMS_KEY = "followers";
 
         public GetFollowersTask(User targetUser, int limit, User lastFollower,
                                 Handler messageHandler) {
-            super(messageHandler);
-            this.targetUser = targetUser;
-            this.limit = limit;
-            this.lastFollower = lastFollower;
-        }
-
-        private FakeData getFakeData() {
-            return new FakeData();
-        }
-
-        private Pair<List<User>, Boolean> getFollowers() {
-            Pair<List<User>, Boolean> pageOfUsers = getFakeData().getPageOfUsers(lastFollower, limit, targetUser);
-            return pageOfUsers;
+            super(limit, lastFollower, messageHandler, targetUser);
         }
 
         @Override
-        protected void runTask() {
-            Pair<List<User>, Boolean> pageOfUsers = getFollowers();
-
-            List<User> followers = pageOfUsers.getFirst();
-            boolean hasMorePages = pageOfUsers.getSecond();
-
-            sendSuccessMessage(msgBundle -> {
-                msgBundle.putSerializable(FOLLOWERS_KEY, (Serializable) followers);
-                msgBundle.putBoolean(MORE_PAGES_KEY, hasMorePages);
-            });
+        protected Pair<List<User>, Boolean> getItems(int limit, User lastItem, User targetUser) {
+            return getFakeData().getPageOfUsers(lastItem, limit, targetUser);
         }
-
     }
 
     /**
