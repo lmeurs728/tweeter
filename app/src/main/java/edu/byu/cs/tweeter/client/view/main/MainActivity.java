@@ -295,8 +295,13 @@ public class MainActivity extends AppCompatActivity implements StatusDialogFragm
     }
 
     @Override
-    public void sendMessage(String message) {
+    public void displayMessage(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void startActivity(User user) {
+        // Do nothing
     }
 
     @Override

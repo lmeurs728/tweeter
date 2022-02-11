@@ -108,40 +108,38 @@ public class FollowService {
     /**
      * Message handler (i.e., observer) for GetFollowersTask.
      */
-    private static class GetFollowingHandler extends BaseHandler {
+    private static class GetFollowingHandler extends GetItemsHandler<User> {
         private final Observer observer;
 
         public GetFollowingHandler(Looper looper, Observer observer) {
             super(looper);
             this.observer = observer;
             this.thingtoAccomplish = "get followees";
+            this.key = GetFollowingTask.ITEMS_KEY;
         }
 
         @Override
-        protected void onSuccess(Bundle bundle) {
-            List<User> followees = (List<User>) bundle.getSerializable(GetFollowingTask.ITEMS_KEY);
-            boolean hasMorePages = bundle.getBoolean(GetFollowersTask.MORE_PAGES_KEY);
-            observer.addFollows(followees, hasMorePages);
+        public void addStuff(List<User> items, boolean hasMorePages) {
+            observer.addFollows(items, hasMorePages);
         }
     }
 
     /**
      * Message handler (i.e., observer) for GetFollowersTask.
      */
-    private static class GetFollowersHandler extends BaseHandler {
+    private static class GetFollowersHandler extends GetItemsHandler<User> {
         private final Observer observer;
 
         public GetFollowersHandler(Looper looper, Observer observer) {
             super(looper);
             this.observer = observer;
             this.thingtoAccomplish = "get followers";
+            this.key = GetFollowersTask.ITEMS_KEY;
         }
 
         @Override
-        protected void onSuccess(Bundle bundle) {
-            List<User> followers = (List<User>) bundle.getSerializable(GetFollowersTask.ITEMS_KEY);
-            boolean hasMorePages = bundle.getBoolean(GetFollowersTask.MORE_PAGES_KEY);
-            observer.addFollows(followers, hasMorePages);
+        public void addStuff(List<User> items, boolean hasMorePages) {
+            observer.addFollows(items, hasMorePages);
         }
     }
 
@@ -154,7 +152,7 @@ public class FollowService {
 
         public GetFollowingTask(User targetUser, int limit, User lastFollower,
                                 Handler messageHandler) {
-            super(limit, lastFollower, messageHandler, targetUser);
+            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser);
         }
 
         @Override
@@ -166,17 +164,10 @@ public class FollowService {
     /**
      * Background task that queries how many followers a user has.
      */
-    public static class GetFollowersCountTask extends BackgroundTask {
+    public static class GetFollowersCountTask extends GetFollowCountTask {
         protected static final String LOG_TAG = "GetFollowersCountTask";
-        public static final String COUNT_KEY = "count";
-
         public GetFollowersCountTask(Handler messageHandler) {
             super(messageHandler);
-        }
-
-        @Override
-        protected void runTask() {
-            sendSuccessMessage(msgBundle -> msgBundle.putInt(COUNT_KEY, 20));
         }
     }
 
@@ -189,7 +180,7 @@ public class FollowService {
 
         public GetFollowersTask(User targetUser, int limit, User lastFollower,
                                 Handler messageHandler) {
-            super(limit, lastFollower, messageHandler, targetUser);
+            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser);
         }
 
         @Override
@@ -201,18 +192,10 @@ public class FollowService {
     /**
      * Background task that queries how many other users a specified user is following.
      */
-    public static class GetFollowingCountTask extends BackgroundTask {
+    public static class GetFollowingCountTask extends GetFollowCountTask {
         protected static final String LOG_TAG = "GetFollowingCountTask";
-        public static final String COUNT_KEY = "count";
-
         public GetFollowingCountTask(Handler messageHandler) {
             super(messageHandler);
-        }
-
-        @Override
-        protected void runTask() {
-            BundleLoader bundleLoader = msgBundle -> msgBundle.putInt(COUNT_KEY, 20);
-            sendSuccessMessage(bundleLoader);
         }
     }
 

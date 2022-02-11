@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import edu.byu.cs.tweeter.model.domain.Status;
+import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.util.FakeData;
 import edu.byu.cs.tweeter.util.Pair;
 
@@ -39,11 +40,11 @@ public class StatusService {
 
         public GetFeedTask(int limit, Status lastStatus,
                            Handler messageHandler) {
-            super(limit, lastStatus, messageHandler);
+            super(limit, lastStatus, ITEMS_KEY, messageHandler);
         }
 
         @Override
-        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem) {
+        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem, User targetUser) {
             return getFakeData().getPageOfStatus(lastItem, limit);
         }
     }
@@ -57,11 +58,11 @@ public class StatusService {
 
         public GetStoryTask(int limit, Status lastStatus,
                            Handler messageHandler) {
-            super(limit, lastStatus, messageHandler);
+            super(limit, lastStatus, ITEMS_KEY, messageHandler);
         }
 
         @Override
-        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem) {
+        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem, User targetUser) {
             return getFakeData().getPageOfStatus(lastItem, limit);
         }
     }
@@ -86,29 +87,21 @@ public class StatusService {
         }
     }
 
-    public void getStatuses(int limit, Status lastStatus) {
-        GetStoryTask getStoryTask = new GetStoryTask(limit, lastStatus, new GetStoryHandler(observer));
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(getStoryTask);
-    }
-
     /**
      * Message handler (i.e., observer) for GetStoryTask.
      */
-    private static class GetStoryHandler extends BaseHandler {
+    private static class GetStoryHandler extends GetItemsHandler<Status> {
         protected Observer observer;
 
         private GetStoryHandler(Observer observer) {
             this.observer = observer;
             this.thingtoAccomplish = "get story";
+            this.key = GetStoryTask.ITEMS_KEY;
         }
 
         @Override
-        protected void onSuccess(Bundle bundle) {
-            List<Status> statuses = (List<Status>) bundle.getSerializable(GetStoryTask.ITEMS_KEY);
-            boolean hasMorePages = bundle.getBoolean(GetStoryTask.MORE_PAGES_KEY);
-
-            observer.addStatuses(statuses, hasMorePages);
+        public void addStuff(List<Status> items, boolean hasMorePages) {
+            observer.addStatuses(items, hasMorePages);
         }
 
         @Override
@@ -125,12 +118,13 @@ public class StatusService {
     /**
      * Message handler (i.e., observer) for GetFeedTask.
      */
-    public static class GetFeedHandler extends BaseHandler {
+    public static class GetFeedHandler extends GetItemsHandler<Status> {
         private final Observer observer;
 
         public GetFeedHandler(Observer observer) {
             this.observer = observer;
             this.thingtoAccomplish = "get feed";
+            this.key = GetFeedTask.ITEMS_KEY;
         }
 
         @Override
@@ -139,11 +133,8 @@ public class StatusService {
         }
 
         @Override
-        protected void onSuccess(Bundle bundle) {
-            List<Status> statuses = (List<Status>) bundle.getSerializable(GetFeedTask.ITEMS_KEY);
-            boolean hasMorePages = bundle.getBoolean(GetFeedTask.MORE_PAGES_KEY);
-
-            observer.addStatuses(statuses, hasMorePages);
+        public void addStuff(List<Status> items, boolean hasMorePages) {
+            observer.addStatuses(items, hasMorePages);
         }
     }
 }

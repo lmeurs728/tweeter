@@ -15,7 +15,7 @@ import edu.byu.cs.tweeter.util.Pair;
 public abstract class GetItemsTask<T> extends BackgroundTask {
     protected static final String LOG_TAG = "GetFollowersTask";
 
-    public static final String ITEMS_KEY = "items";
+    public String ITEMS_KEY = "";
     public static final String MORE_PAGES_KEY = "more-pages";
 
     /**
@@ -33,38 +33,32 @@ public abstract class GetItemsTask<T> extends BackgroundTask {
      */
     private final T lastItem;
 
-    public GetItemsTask(int limit, T lastItem,
+    public GetItemsTask(int limit, T lastItem, String ITEMS_KEY,
                             Handler messageHandler, User targetUser) {
         super(messageHandler);
         this.targetUser = targetUser;
         this.limit = limit;
         this.lastItem = lastItem;
+        this.ITEMS_KEY = ITEMS_KEY;
     }
 
-    public GetItemsTask(int limit, T lastItem,
+    public GetItemsTask(int limit, T lastItem, String ITEMS_KEY,
                         Handler messageHandler) {
         super(messageHandler);
         this.limit = limit;
         this.lastItem = lastItem;
+        this.ITEMS_KEY = ITEMS_KEY;
     }
 
     protected FakeData getFakeData() {
         return new FakeData();
     }
 
-    protected Pair<List<T>, Boolean> getItems(int limit, T lastItem) {
-        return null;
-    }
-
-    protected Pair<List<T>, Boolean> getItems(int limit, T lastItem, User targetUser) {
-        return null;
-    }
+    abstract protected Pair<List<T>, Boolean> getItems(int limit, T lastItem, User targetUser);
 
     @Override
     protected void runTask() {
-        Pair<List<T>, Boolean> pageOfItems = targetUser != null
-                ? getItems(limit, lastItem, targetUser)
-                : getItems(limit, lastItem);
+        Pair<List<T>, Boolean> pageOfItems = getItems(limit, lastItem, targetUser);
 
         List<T> items = pageOfItems.getFirst();
         boolean hasMorePages = pageOfItems.getSecond();

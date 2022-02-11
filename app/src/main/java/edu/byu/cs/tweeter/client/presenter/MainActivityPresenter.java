@@ -5,7 +5,9 @@ import edu.byu.cs.tweeter.client.model.service.UserService;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 
-public class MainActivityPresenter implements UserService.Observer, FollowService.Observer {
+public class MainActivityPresenter extends BasePresenter implements UserService.Observer, FollowService.Observer {
+    private final FollowService followService;
+
     @Override
     public void handleLogoutSuccess() {
         view.handleLogoutSuccess();
@@ -46,44 +48,38 @@ public class MainActivityPresenter implements UserService.Observer, FollowServic
         view.handlePostStatusSuccess();
     }
 
-    @Override
-    public void sendMessage(String message) {
-        view.sendMessage(message);
-    }
-
     public void doGetFollowersCountTask(User selectedUser) {
-        new FollowService(this).doGetFollowersCountTask();
+        followService.doGetFollowersCountTask();
     }
 
     public void doGetFollowingCountTask(User selectedUser) {
-        new FollowService(this).doGetFollowingCountTask();
+        followService.doGetFollowingCountTask();
     }
 
     public void doIsFollowerTask(User selectedUser) {
-        new FollowService(this).doIsFollowerTask(selectedUser);
+        followService.doIsFollowerTask(selectedUser);
     }
 
     public void doFollowTask(User selectedUser) {
-        new FollowService(this).doFollowTask();
+        followService.doFollowTask();
     }
 
     public void doUnfollowTask(User selectedUser) {
-        new FollowService(this).doUnfollowTask(selectedUser);
+        followService.doUnfollowTask(selectedUser);
     }
 
     public void doPostStatusTask(Status newStatus) {
-        new FollowService(this).doPostStatusTask();
+        followService.doPostStatusTask();
     }
 
     public void doLogoutTask() {
         new UserService(this).doLogoutTask();
     }
 
-    public interface View {
+    public interface View extends BaseView {
         void handleFollowingCountSuccess(String s);
         void handlePostStatusSuccess();
         void enableFollowButton();
-        void sendMessage(String message);
         void handleUnfollowSuccess();
         void handleFollowSuccess();
         void handleFollowersCountSuccess(String s);
@@ -91,9 +87,11 @@ public class MainActivityPresenter implements UserService.Observer, FollowServic
         void handleIsFollowerSuccess(boolean isFollower);
     }
 
-    private View view;
+    private final View view;
 
     public MainActivityPresenter(View view) {
+        super(view);
         this.view = view;
+        this.followService = new FollowService(this);
     }
 }
