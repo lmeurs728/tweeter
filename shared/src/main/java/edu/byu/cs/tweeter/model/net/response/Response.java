@@ -15,7 +15,7 @@ class Response implements Serializable {
      *
      * @param success the success message.
      */
-    Response(boolean success) {
+    public Response(boolean success) {
         this(success, null);
     }
 
@@ -25,7 +25,7 @@ class Response implements Serializable {
      * @param success the success indicator.
      * @param message the error message.
      */
-    Response(boolean success, String message) {
+    public Response(boolean success, String message) {
         this.success = success;
         this.message = message;
     }

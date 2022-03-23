@@ -2,11 +2,20 @@ package edu.byu.cs.tweeter.server.service;
 
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.model.net.request.GetUserRequest;
 import edu.byu.cs.tweeter.model.net.request.LoginRequest;
+import edu.byu.cs.tweeter.model.net.request.LogoutRequest;
+import edu.byu.cs.tweeter.model.net.request.RegisterRequest;
 import edu.byu.cs.tweeter.model.net.response.LoginResponse;
+import edu.byu.cs.tweeter.model.net.response.LogoutResponse;
+import edu.byu.cs.tweeter.model.net.response.RegisterResponse;
+import edu.byu.cs.tweeter.model.net.response.UserResponse;
 import edu.byu.cs.tweeter.util.FakeData;
 
 public class UserService {
+    public LogoutResponse logout(LogoutRequest request) {
+        return new LogoutResponse();
+    }
 
     public LoginResponse login(LoginRequest request) {
         if(request.getUsername() == null){
@@ -49,5 +58,31 @@ public class UserService {
      */
     FakeData getFakeData() {
         return new FakeData();
+    }
+
+    public RegisterResponse register(RegisterRequest input) {
+        if(input.getUsername() == null){
+            throw new RuntimeException("[BadRequest] Missing a username");
+        } else if(input.getPassword() == null) {
+            throw new RuntimeException("[BadRequest] Missing a password");
+        }
+        else if(input.getFirstName() == null) {
+            throw new RuntimeException("[BadRequest] Missing a first name");
+        }
+        else if(input.getLastName() == null) {
+            throw new RuntimeException("[BadRequest] Missing a last name");
+        }
+        else if(input.getImage() == null) {
+            throw new RuntimeException("[BadRequest] Missing an image");
+        }
+
+        // TODO: Generates dummy data. Replace with a real implementation.
+        User user = getDummyUser();
+        AuthToken authToken = getDummyAuthToken();
+        return new RegisterResponse(user, authToken);
+    }
+
+    public UserResponse getUser(GetUserRequest input) {
+        return new UserResponse(getDummyUser());
     }
 }

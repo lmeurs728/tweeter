@@ -1,0 +1,52 @@
+TODO:
+ X Make 14 requests in shared
+ X Make 14 responses in shared
+ X Make 14 handlers in server.lambda
+ X Make 14 services in server.service
+ X Status codes! ** Start with this **
+ X Make 14 lambda functions on aws
+ X Make 14 api resources on aws
+ X Change 14 service tasks to use request and response and facade
+
+ - Other stuff to do:
+   - Write integration tests where needed
+     - Register
+     - getFollowers
+     - getFollowersCount
+   - Sequence Diagram for when a user successfully sends a status
+
+   Key: * is request
+        # is response
+        $ is lambda
+        % is service
+        @ is dao (optional)
+        ~ is lambda
+        ! is api gateway
+        & is facade
+        ? is refactored
+
+   1  Login             * # $ % @ ~ ! & ?
+ Paged
+   2  GetFollowing      * # $ % @ ~ ! & ?
+   3  GetFollowers      * # $ % @ ~ ! & ?
+   4  GetFeed           * # $ % @ ~ ! & ?
+   5  GetStory          * # $ % @ ~ ! & ?
+
+   6  Follow            * # $ % @ ~ ! & ?
+   7  Unfollow          * # $ % @ ~ ! & ?
+   8  GetFollowingCount * # $ % @ ~ ! & ?
+   9  GetFollowerCount  * # $ % @ ~ ! & ?
+   10 Register          * # $ % @ ~ ! & ?
+   11 Logout            * # $ % @ ~ ! & ?
+   12 GetUser           * # $ % @ ~ ! & ?
+   13 PostStatus        * # $ % @ ~ ! & ?
+   14 IsFollower        * # $ % @ ~ ! & ?
+
+   ^\[Bad Request\].*
+   ^\[Server Error\].*
+
+   BUGS:
+   - Story
+   - Followers
+   - FollowerCount
+   - Register

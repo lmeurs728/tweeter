@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import edu.byu.cs.tweeter.model.net.TweeterRemoteException;
+
+import java.io.IOException;
 
 public abstract class BackgroundTask implements Runnable {
 
-    private static final String LOG_TAG = "Task";
+    protected interface BundleLoader {
+        void load(Bundle msgBundle);
+    }
+
+    protected static final String LOG_TAG = "Task";
 
     public static final String SUCCESS_KEY = "success";
     public static final String MESSAGE_KEY = "message";
@@ -31,29 +38,27 @@ public abstract class BackgroundTask implements Runnable {
 
     // This method is public instead of protected to make it accessible to test cases
     public void sendSuccessMessage() {
-        Bundle msgBundle = new Bundle();
-        msgBundle.putBoolean(SUCCESS_KEY, true);
-        loadSuccessBundle(msgBundle);
+        Bundle msgBundle = createSuccessBundle();
         sendMessage(msgBundle);
     }
 
-    // To be overridden by each task to add information to the bundle
-    protected void loadSuccessBundle(Bundle msgBundle) {
-        // By default, do nothing
+    // This method is public instead of protected to make it accessible to test cases
+    public void sendSuccessMessage(BundleLoader bundleLoader) {
+        Bundle msgBundle = createSuccessBundle();
+        bundleLoader.load(msgBundle);
+        sendMessage(msgBundle);
     }
 
     // This method is public instead of protected to make it accessible to test cases
     public void sendFailedMessage(String message) {
-        Bundle msgBundle = new Bundle();
-        msgBundle.putBoolean(SUCCESS_KEY, false);
+        Bundle msgBundle = createFailedBundle();
         msgBundle.putString(MESSAGE_KEY, message);
         sendMessage(msgBundle);
     }
 
     // This method is public instead of protected to make it accessible to test cases
     public void sendExceptionMessage(Exception exception) {
-        Bundle msgBundle = new Bundle();
-        msgBundle.putBoolean(SUCCESS_KEY, false);
+        Bundle msgBundle = createFailedBundle();
         msgBundle.putSerializable(EXCEPTION_KEY, exception);
         sendMessage(msgBundle);
     }
@@ -65,5 +70,17 @@ public abstract class BackgroundTask implements Runnable {
         messageHandler.sendMessage(msg);
     }
 
-    protected abstract void runTask();
+    private Bundle createSuccessBundle() {
+        Bundle msgBundle = new Bundle();
+        msgBundle.putBoolean(SUCCESS_KEY, true);
+        return msgBundle;
+    }
+
+    private Bundle createFailedBundle() {
+        Bundle msgBundle = new Bundle();
+        msgBundle.putBoolean(SUCCESS_KEY, false);
+        return msgBundle;
+    }
+
+    protected abstract void runTask() throws IOException, TweeterRemoteException;
 }
