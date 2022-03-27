@@ -11,8 +11,8 @@ public class FeedPresenter extends PagedPresenter<Status> implements StatusServi
     }
 
     @Override
-    public void doServiceMethod() {
-        new StatusService(this).doGetFeedTask(PAGE_SIZE, lastItem);
+    public void doServiceMethod(boolean firstTime) {
+        new StatusService(this).doGetFeedTask(PAGE_SIZE, lastItem, firstTime);
     }
 
     @Override

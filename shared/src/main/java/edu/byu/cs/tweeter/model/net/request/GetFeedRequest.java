@@ -5,18 +5,20 @@ import edu.byu.cs.tweeter.model.domain.Status;
 
 public class GetFeedRequest {
     private AuthToken authToken;
-    private Status lastStatus;
+    private long lastStatusTime;
     private int limit;
     private String targetUser;
+    private boolean firstTime;
 
     public GetFeedRequest() {
     }
 
-    public GetFeedRequest(AuthToken authToken, Status lastStatus, int limit, String targetUser) {
+    public GetFeedRequest(AuthToken authToken, long lastStatusTime, int limit, String targetUser, boolean firstTime) {
         this.authToken = authToken;
-        this.lastStatus = lastStatus;
+        this.lastStatusTime = lastStatusTime;
         this.limit = limit;
         this.targetUser = targetUser;
+        this.firstTime = firstTime;
     }
 
     public AuthToken getAuthToken() {
@@ -27,12 +29,12 @@ public class GetFeedRequest {
         this.authToken = authToken;
     }
 
-    public Status getLastStatus() {
-        return lastStatus;
+    public long getLastStatusTime() {
+        return lastStatusTime;
     }
 
-    public void setLastStatus(Status lastStatus) {
-        this.lastStatus = lastStatus;
+    public void setLastStatusTime(long lastStatusTime) {
+        this.lastStatusTime = lastStatusTime;
     }
 
     public int getLimit() {
@@ -49,5 +51,13 @@ public class GetFeedRequest {
 
     public void setTargetUser(String targetUser) {
         this.targetUser = targetUser;
+    }
+
+    public boolean isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(boolean firstTime) {
+        this.firstTime = firstTime;
     }
 }

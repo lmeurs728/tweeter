@@ -7,16 +7,17 @@ import java.util.Objects;
 
 public class StoryResponse extends PagedResponse {
     private List<Status> statuses;
+    private String lastDate;
 
     public StoryResponse(String message) {
         super(false, message, false);
     }
 
-    public StoryResponse(List<Status> statuses, boolean hasMorePages) {
+    public StoryResponse(List<Status> statuses, boolean hasMorePages, String lastDate) {
         super(true, hasMorePages);
         this.statuses = statuses;
+        this.lastDate = lastDate;
     }
-
 
     public List<Status> getStatuses() {
         return statuses;
@@ -35,5 +36,17 @@ public class StoryResponse extends PagedResponse {
     @Override
     public int hashCode() {
         return Objects.hash(statuses);
+    }
+
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public String getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(String lastDate) {
+        this.lastDate = lastDate;
     }
 }

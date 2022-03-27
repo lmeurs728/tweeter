@@ -105,7 +105,7 @@ public class StatusServiceTest {
      */
     @Test
     public void testGetStory_validRequest_correctResponse() throws InterruptedException {
-        statusServiceSpy.getStory(3, status, currentUser);
+        statusServiceSpy.getStory(3, status, currentUser, true);
         awaitCountDownLatch();
 
         List<Status> expectedStatuses = new FakeData().getFakeStatuses().subList(0, 3);

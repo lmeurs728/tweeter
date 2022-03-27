@@ -1,6 +1,8 @@
 package edu.byu.cs.tweeter.model.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +32,10 @@ public class Status implements Serializable {
     public List<String> mentions;
 
     public Status() {
+    }
+
+    public Status(String time) {
+        this.datetime = time;
     }
 
     public Status(String post, User user, String datetime, List<String> urls, List<String> mentions) {

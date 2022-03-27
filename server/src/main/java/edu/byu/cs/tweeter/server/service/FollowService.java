@@ -1,15 +1,15 @@
 package edu.byu.cs.tweeter.server.service;
 
+import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.net.request.*;
 import edu.byu.cs.tweeter.model.net.response.*;
+import edu.byu.cs.tweeter.server.dao.AuthDAO;
 import edu.byu.cs.tweeter.server.dao.FollowDAO;
-
-import java.util.Random;
 
 /**
  * Contains the business logic for getting the users a user is following.
  */
-public class FollowService {
+public class FollowService extends BaseService {
 
     /**
      * Returns the users that the user specified in the request is following. Uses information in
@@ -26,7 +26,11 @@ public class FollowService {
         } else if(request.getLimit() <= 0) {
             throw new RuntimeException("[BadRequest] Request needs to have a positive limit");
         }
-        return getFollowDAO().getFollowees(request);
+
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            return getFollowDAO().getFollowees(request);
+        }
+        return new FollowingResponse("Authtoken invalid");
     }
 
     public FollowersResponse getFollowers(FollowersRequest request) {
@@ -35,15 +39,27 @@ public class FollowService {
         } else if(request.getLimit() <= 0) {
             throw new RuntimeException("[BadRequest] Request needs to have a positive limit");
         }
-        return getFollowDAO().getFollowers(request);
+
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            return getFollowDAO().getFollowers(request);
+        }
+        return new FollowersResponse("Authtoken invalid");
     }
 
     public FollowResponse follow(FollowRequest request) {
-        return new FollowResponse();
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            getFollowDAO().Follow(request);
+            return new FollowResponse();
+        }
+        return new FollowResponse("Authtoken invalid");
     }
 
     public UnfollowResponse unfollow(UnfollowRequest request) {
-        return new UnfollowResponse();
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            getFollowDAO().Unfollow(request);
+            return new UnfollowResponse();
+        }
+        return new UnfollowResponse("Authtoken invalid");
     }
 
     public FollowingCountResponse getFollowingCount(GetFollowingCountRequest request) {
@@ -53,7 +69,10 @@ public class FollowService {
         else if (request.getAuthToken() == null) {
             throw new RuntimeException("[BadRequest] Request needs to have an auth token");
         }
-        return new FollowingCountResponse(getFollowDAO().getFolloweeCount(request.getTargetUser()));
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            return new FollowingCountResponse(getFollowDAO().getFolloweeCount(request.getTargetUser().getAlias()));
+        }
+        return new FollowingCountResponse("Authtoken invalid");
     }
 
     public FollowersCountResponse getFollowerCount(GetFollowerCountRequest request) {
@@ -63,7 +82,11 @@ public class FollowService {
         else if (request.getAuthToken() == null) {
             throw new RuntimeException("[BadRequest] Request needs to have an auth token");
         }
-        return new FollowersCountResponse(getFollowDAO().getFollowerCount(request.getTargetUser()));
+
+        if (getAuthDAO().verifyAuthToken(request.getAuthToken())) {
+            return new FollowersCountResponse(getFollowDAO().getFollowerCount(request.getTargetUser().getAlias()));
+        }
+        return new FollowersCountResponse("Authtoken invalid");
     }
 
     /**
@@ -74,10 +97,14 @@ public class FollowService {
      * @return the instance.
      */
     FollowDAO getFollowDAO() {
-        return new FollowDAO();
+        return factory.getFollowDAO();
+    }
+
+    public AuthDAO getAuthDAO() {
+        return factory.getAuthDAO();
     }
 
     public IsFollowerResponse checkIsFollower(IsFollowerRequest input) {
-        return new IsFollowerResponse(new Random().nextInt() > 0);
+        return getFollowDAO().IsFollower(input);
     }
 }

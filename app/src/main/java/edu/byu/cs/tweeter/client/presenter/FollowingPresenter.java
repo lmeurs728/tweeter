@@ -14,8 +14,8 @@ public class FollowingPresenter extends PagedPresenter<User> implements FollowSe
     }
 
     @Override
-    public void doServiceMethod() {
-        new FollowService(this).getFollowees(Cache.getInstance().getCurrUserAuthToken(), user, PAGE_SIZE, lastItem);
+    public void doServiceMethod(boolean firstTime) {
+        new FollowService(this).getFollowees(Cache.getInstance().getCurrUserAuthToken(), user, PAGE_SIZE, lastItem, firstTime);
     }
 
     @Override

@@ -7,15 +7,17 @@ public class FollowersRequest {
     private String followeeAlias;
     private int limit;
     private String lastFollowerAlias;
+    private boolean firstTime;
 
     public FollowersRequest() {
     }
 
-    public FollowersRequest(AuthToken authToken, String followeeAlias, int limit, String lastFollowerAlias) {
+    public FollowersRequest(AuthToken authToken, String followeeAlias, int limit, String lastFollowerAlias, boolean firstTime) {
         this.authToken = authToken;
         this.followeeAlias = followeeAlias;
         this.limit = limit;
         this.lastFollowerAlias = lastFollowerAlias;
+        this.firstTime = firstTime;
     }
 
     public AuthToken getAuthToken() {
@@ -48,5 +50,13 @@ public class FollowersRequest {
 
     public void setLastFollowerAlias(String lastFollowerAlias) {
         this.lastFollowerAlias = lastFollowerAlias;
+    }
+
+    public boolean isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(boolean firstTime) {
+        this.firstTime = firstTime;
     }
 }

@@ -7,14 +7,16 @@ import java.util.Objects;
 
 public class FeedResponse extends PagedResponse {
     private List<Status> statuses;
+    private String lastStatus;
 
     public FeedResponse(String message) {
         super(false, message, false);
     }
 
-    public FeedResponse(List<Status> statuses, boolean hasMorePages) {
+    public FeedResponse(List<Status> statuses, boolean hasMorePages, String lastStatus) {
         super(true, hasMorePages);
         this.statuses = statuses;
+        this.lastStatus = lastStatus;
     }
 
 
@@ -35,5 +37,17 @@ public class FeedResponse extends PagedResponse {
     @Override
     public int hashCode() {
         return Objects.hash(statuses);
+    }
+
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public String getLastStatus() {
+        return lastStatus;
+    }
+
+    public void setLastStatus(String lastStatus) {
+        this.lastStatus = lastStatus;
     }
 }

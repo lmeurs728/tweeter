@@ -1,0 +1,2739 @@
+Completed 256.0 KiB/9.4 MiB (81.6 KiB/s) with 1 file(s) remainingCompleted 512.0 KiB/9.4 MiB (162.8 KiB/s) with 1 file(s) remainingCompleted 768.0 KiB/9.4 MiB (101.8 KiB/s) with 1 file(s) remainingCompleted 1.0 MiB/9.4 MiB (127.4 KiB/s) with 1 file(s) remaining  Completed 1.2 MiB/9.4 MiB (111.7 KiB/s) with 1 file(s) remaining  Completed 1.5 MiB/9.4 MiB (112.0 KiB/s) with 1 file(s) remaining  Completed 1.8 MiB/9.4 MiB (114.7 KiB/s) with 1 file(s) remaining  Completed 2.0 MiB/9.4 MiB (109.6 KiB/s) with 1 file(s) remaining  Completed 2.2 MiB/9.4 MiB (122.3 KiB/s) with 1 file(s) remaining  Completed 2.5 MiB/9.4 MiB (120.5 KiB/s) with 1 file(s) remaining  Completed 2.7 MiB/9.4 MiB (110.0 KiB/s) with 1 file(s) remaining  Completed 2.9 MiB/9.4 MiB (117.0 KiB/s) with 1 file(s) remaining  Completed 3.2 MiB/9.4 MiB (116.4 KiB/s) with 1 file(s) remaining  Completed 3.4 MiB/9.4 MiB (116.4 KiB/s) with 1 file(s) remaining  Completed 3.7 MiB/9.4 MiB (116.3 KiB/s) with 1 file(s) remaining  Completed 3.9 MiB/9.4 MiB (113.7 KiB/s) with 1 file(s) remaining  Completed 4.2 MiB/9.4 MiB (116.4 KiB/s) with 1 file(s) remaining  Completed 4.4 MiB/9.4 MiB (116.1 KiB/s) with 1 file(s) remaining  Completed 4.7 MiB/9.4 MiB (115.2 KiB/s) with 1 file(s) remaining  Completed 4.9 MiB/9.4 MiB (116.0 KiB/s) with 1 file(s) remaining  Completed 5.2 MiB/9.4 MiB (115.7 KiB/s) with 1 file(s) remaining  Completed 5.4 MiB/9.4 MiB (115.4 KiB/s) with 1 file(s) remaining  Completed 5.7 MiB/9.4 MiB (115.4 KiB/s) with 1 file(s) remaining  Completed 5.9 MiB/9.4 MiB (115.7 KiB/s) with 1 file(s) remaining  Completed 6.2 MiB/9.4 MiB (114.6 KiB/s) with 1 file(s) remaining  Completed 6.4 MiB/9.4 MiB (114.3 KiB/s) with 1 file(s) remaining  Completed 6.7 MiB/9.4 MiB (114.6 KiB/s) with 1 file(s) remaining  Completed 6.9 MiB/9.4 MiB (114.4 KiB/s) with 1 file(s) remaining  Completed 7.2 MiB/9.4 MiB (114.0 KiB/s) with 1 file(s) remaining  Completed 7.4 MiB/9.4 MiB (114.0 KiB/s) with 1 file(s) remaining  Completed 7.7 MiB/9.4 MiB (114.3 KiB/s) with 1 file(s) remaining  Completed 7.9 MiB/9.4 MiB (114.6 KiB/s) with 1 file(s) remaining  Completed 8.2 MiB/9.4 MiB (114.6 KiB/s) with 1 file(s) remaining  Completed 8.4 MiB/9.4 MiB (114.5 KiB/s) with 1 file(s) remaining  Completed 8.7 MiB/9.4 MiB (114.0 KiB/s) with 1 file(s) remaining  Completed 8.9 MiB/9.4 MiB (114.2 KiB/s) with 1 file(s) remaining  Completed 9.2 MiB/9.4 MiB (114.1 KiB/s) with 1 file(s) remaining  Completed 9.4 MiB/9.4 MiB (114.1 KiB/s) with 1 file(s) remaining  upload: server\build\libs\server-all.jar to s3://lmeurshandlerjar/server-all.jar
+Completed 256.0 KiB/9.4 MiB (142.9 KiB/s) with 1 file(s) remainingCompleted 512.0 KiB/9.4 MiB (123.7 KiB/s) with 1 file(s) remainingCompleted 768.0 KiB/9.4 MiB (127.8 KiB/s) with 1 file(s) remainingCompleted 1.0 MiB/9.4 MiB (115.1 KiB/s) with 1 file(s) remaining  Completed 1.2 MiB/9.4 MiB (117.0 KiB/s) with 1 file(s) remaining  Completed 1.5 MiB/9.4 MiB (110.7 KiB/s) with 1 file(s) remaining  Completed 1.8 MiB/9.4 MiB (116.5 KiB/s) with 1 file(s) remaining  Completed 2.0 MiB/9.4 MiB (120.7 KiB/s) with 1 file(s) remaining  Completed 2.2 MiB/9.4 MiB (113.5 KiB/s) with 1 file(s) remaining  Completed 2.4 MiB/9.4 MiB (115.2 KiB/s) with 1 file(s) remaining  Completed 2.7 MiB/9.4 MiB (118.2 KiB/s) with 1 file(s) remaining  Completed 2.9 MiB/9.4 MiB (117.3 KiB/s) with 1 file(s) remaining  Completed 3.2 MiB/9.4 MiB (116.3 KiB/s) with 1 file(s) remaining  Completed 3.4 MiB/9.4 MiB (115.5 KiB/s) with 1 file(s) remaining  Completed 3.7 MiB/9.4 MiB (115.0 KiB/s) with 1 file(s) remaining  Completed 3.9 MiB/9.4 MiB (115.7 KiB/s) with 1 file(s) remaining  Completed 4.2 MiB/9.4 MiB (114.9 KiB/s) with 1 file(s) remaining  Completed 4.4 MiB/9.4 MiB (115.5 KiB/s) with 1 file(s) remaining  Completed 4.7 MiB/9.4 MiB (115.5 KiB/s) with 1 file(s) remaining  Completed 4.9 MiB/9.4 MiB (115.3 KiB/s) with 1 file(s) remaining  Completed 5.2 MiB/9.4 MiB (114.7 KiB/s) with 1 file(s) remaining  Completed 5.4 MiB/9.4 MiB (115.2 KiB/s) with 1 file(s) remaining  Completed 5.7 MiB/9.4 MiB (115.3 KiB/s) with 1 file(s) remaining  Completed 5.9 MiB/9.4 MiB (114.8 KiB/s) with 1 file(s) remaining  Completed 6.2 MiB/9.4 MiB (115.1 KiB/s) with 1 file(s) remaining  Completed 6.4 MiB/9.4 MiB (114.9 KiB/s) with 1 file(s) remaining  Completed 6.7 MiB/9.4 MiB (115.3 KiB/s) with 1 file(s) remaining  Completed 6.9 MiB/9.4 MiB (115.2 KiB/s) with 1 file(s) remaining  Completed 7.2 MiB/9.4 MiB (114.8 KiB/s) with 1 file(s) remaining  Completed 7.4 MiB/9.4 MiB (114.9 KiB/s) with 1 file(s) remaining  Completed 7.7 MiB/9.4 MiB (114.8 KiB/s) with 1 file(s) remaining  Completed 7.9 MiB/9.4 MiB (114.7 KiB/s) with 1 file(s) remaining  Completed 8.2 MiB/9.4 MiB (114.6 KiB/s) with 1 file(s) remaining  Completed 8.4 MiB/9.4 MiB (115.0 KiB/s) with 1 file(s) remaining  Completed 8.7 MiB/9.4 MiB (114.7 KiB/s) with 1 file(s) remaining  Completed 8.9 MiB/9.4 MiB (115.1 KiB/s) with 1 file(s) remaining  Completed 9.2 MiB/9.4 MiB (114.8 KiB/s) with 1 file(s) remaining  Completed 9.4 MiB/9.4 MiB (114.5 KiB/s) with 1 file(s) remaining  upload: server\build\libs\server-all.jar to s3://lmeurshandlerjar/server-all.jar
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:08.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "c6e0af17-c1ef-46f2-97ff-0cd01f0f0424",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:10.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "18890176-9fa4-444b-9638-2dd15e2d7a4b",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:14.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "44d37ffa-dc5d-44dc-957b-95036f945db6",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:16.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "95797449-6a4d-485d-bb74-c5666e4cd855",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:18.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "1aaa8d31-b238-4948-8036-e2dd628cd6c5",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:19.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "92542230-5b87-4c07-b0f3-97af1fc84243",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:21.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "d77923f1-af5a-49dc-bd44-48bb42e3e07b",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:24.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "da05aba3-4844-4d6a-9f16-3a78b5a06264",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:28.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ad570548-7e1f-4803-941f-1d75dc033ab3",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:30.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ae6beeff-4315-4b55-af54-8005b1d2c250",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:32.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "cb41550d-35d1-4275-9de2-41086e558706",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:34.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "77d74a84-c03b-4521-a8dd-88c318cc3d6a",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T22:54:36.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "89380547-d520-403c-9945-7ddedaac8e84",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:22.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "95a3b1c8-7ca2-429d-a108-4c872293c523",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:24.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "d9651402-d0d8-4bc5-9e8c-f2184058fbb4",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:26.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a2bccd86-02a0-492a-b035-75da0077c98f",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:28.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a0eea18a-993e-4af6-a09b-8a479b3394e2",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:29.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "73090d47-9200-4911-bbb4-100e3fe92a12",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:31.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "bcfaa15a-005c-436a-8907-d1d7b43b41e1",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:33.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "d1d3f84b-8c56-494b-a631-11242c038402",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:35.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "71919f73-e7bf-44b4-a43a-acc73b48b9e4",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:38.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "3ec290ff-384c-4638-a2f9-e1997aa5944b",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:41.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "523d34fb-9d9c-46ad-aee6-24644349d943",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:44.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "223caeca-8b07-45b3-8b8c-ede3f878e1b7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:48.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "fd9a236f-54a4-4775-8edb-0aceda9d9c45",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904375,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:02:52.000+0000",
+    "CodeSha256": "2RC7iDFcL8nTrWJM9kr8jB9iTmIuooZgQtfWx5cI1Vw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a0dcac8f-7bb5-43f8-bb11-6a6b062b8a4f",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:38.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "328c458c-52e9-4e61-8d65-1753b599ec8a",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:40.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "c81cb251-53de-42a1-8255-33eb8f65b1b3",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:41.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "17e95e77-79e0-4e3e-a44f-7e52680d8a43",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:43.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "c68c98c2-eabb-4840-9b73-e26c2a7cfbee",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:45.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "00c9fa3f-aec9-4f6a-9f89-4b6f71d20583",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:47.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "c00a4711-30ac-4554-b10c-54842ca4e1da",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:48.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "3bd1553a-2186-4085-bd22-5a245661993e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:50.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "5158aeea-1f1a-4a74-ba99-a8e00cb5f82d",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:53.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "54f2a50b-1c51-46f6-a56b-f59ae662a757",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:55.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a18f2204-8a16-43ad-a7a5-5d1ffe2c5892",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:11:57.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "812541c5-c7f9-4b14-851a-45523349b62e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:12:00.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "05d27949-c4ee-4250-809f-8ccfa58aff64",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904463,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:12:02.000+0000",
+    "CodeSha256": "EV3vbCjiXkCktPzpPiuw3f4P7ex8HWcJUB6O5uT+H5A=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "5b952660-95da-43ba-9f31-f75cf40badbe",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:30.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "032a54a9-031d-4017-89e2-413539aa9730",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:31.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ffa4f642-2e59-4152-98e4-9a136ff4827c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:33.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "1ce3f19d-6db2-4fff-bf30-c37d95c78545",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:35.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "9d40725f-d6ad-4033-83ed-17e9dbf8b26e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:37.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e076ce58-aed9-40ad-8cd0-5bf7062c1b38",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:39.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "492ab991-cc15-47cc-a32e-13b47cd9d99c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:41.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "d74fa85b-212f-42c0-bc6e-dd3db15147ab",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:43.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "66a79179-7c50-4d36-9ede-9bb6ac192b87",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:46.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "24d755e3-520e-4bb9-a5b3-d73b07f23a2a",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:48.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "8957e421-e752-4f82-a554-31df851cd1e7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:50.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "0be4274a-f0a2-4a34-9598-e80794bd78d6",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:52.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "f4a1151e-ab54-4f0f-b71a-8c48b41b4e52",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904511,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:21:53.000+0000",
+    "CodeSha256": "ag5HedYeJeAg84qwJ3AiJv/06JQvSViHIwpXi2x6tm8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e9a80171-04c6-47fd-a165-4fee8657967c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:26.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "95e314e8-e5c2-4e86-b75b-5fca98dd75e8",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:28.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "9f53cb51-9b4e-4031-bcf3-765afce6d038",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:30.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "40e14c8c-cb5c-4748-801c-a87859aaeccb",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:32.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e4e9d473-e767-49d4-814a-5bb2c39d216a",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:35.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "6295a29e-03a5-4c6f-ac9c-8b2542efe08c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:36.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "ad2146c8-3539-4690-ab9d-57afc3ee3ab7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:38.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "55038775-c677-4e33-a0bc-c0b217b5534c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:40.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "5f816f02-de99-4f46-a39d-caf1b88c4aa8",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:43.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "7a950177-a037-4c68-b06c-f4cb8ccda31e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:45.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "1fa8f6da-3b58-48d1-86a1-786ca693e5e8",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:46.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "4e8a2d64-4bca-437b-bb14-e988d63240ad",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:48.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e80bd110-a207-4ff4-877f-cea1d2008fee",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904635,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-25T23:44:50.000+0000",
+    "CodeSha256": "M79DfhjnteZdKseJ8WfTTFpqdG8SD8lrLErMwgFbiz8=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "f6e9ebf7-8b28-4d43-af32-1062918fa35b",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:32.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "21323e66-7820-4a79-b63d-255ba2dba384",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:34.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "10c27bc6-5038-4e9e-947f-bbed79aa94c0",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:36.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "64bc83dd-ad67-4cc0-8025-59a64f0b0653",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:38.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "fd2744b6-3bca-41db-8303-b6328e3dab18",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:40.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "89d9f644-0ea5-4c9d-ad90-6bbb4fdcb0d6",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:42.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "25acad38-e271-45fe-9640-bf9b8886e6e9",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:43.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "4d6ed2ba-e3ed-419f-b571-e08d14647637",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:45.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "77500c47-7ab3-4ce1-8b26-9bc6c414c797",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:49.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e1c9eaf1-0a56-4362-b431-493d59289ea5",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:51.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "170b2438-0ee0-4a8f-bf21-ec3ee4524030",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:53.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "f63e2eb9-ee41-4bc7-baaa-87dadfd24f0e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:54.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "1f738e92-d564-4fd0-bb09-361b797d8604",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:31:56.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "853891f5-09c3-4008-846d-50e9f14a4c7e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:04.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "4d90269a-be65-42dd-9ba9-0724947a32c6",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:06.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "2c35c145-15d1-40d1-82e0-c0ca781eb6a0",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:08.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a874779f-3acf-42b1-9a14-36cba98e1a18",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:10.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "7747f96f-99ef-48af-8918-48161415917c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:12.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "58f60dc3-e8fc-408d-adb5-e568ac4347d8",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:14.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "3c025cf7-7da4-4c92-adb3-22cc2ee58cf7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:16.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "df03c82a-40a3-4e9a-a569-051b84faf1f9",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:18.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "7bb2eb17-a783-40ea-b390-435974fc9d3f",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:22.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e602e381-7a54-47b3-8c8e-b4269bad9339",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:24.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "d708e1a3-a9ae-44a7-ba8c-9aedb71a646d",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:26.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "970796bc-4906-49e3-aeeb-3102c256f22f",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:29.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "5165a7a2-9fe6-43b0-b5d6-9ea91f294da8",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:37:31.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "95369622-fe09-4bd1-a650-0f3bf8b83589",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:03.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "0475131e-889e-4b50-b8f1-d4ce9330e8ad",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:05.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "14a2b254-be3b-4921-a58f-d0d3bf803ecd",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:07.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "096714d3-2770-497b-8193-746d618caf9a",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:09.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "49a326c1-59aa-40e4-94f4-6215d1a99a82",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:11.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "121bb750-6e27-4a96-b631-4799f262034c",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:13.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "5c3ed0c2-92bf-4975-af76-2a96f9b10067",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:15.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e59bb182-61ee-4804-96d7-51397784808d",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:17.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e899514f-342a-4484-a7ac-bd27668d6346",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowees",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowees",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:19.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "c59fbc02-bf6f-4608-a9db-77d3312963b4",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:21.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "752979ba-254c-4293-9f6f-e82233bf10cc",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:23.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e8fc8e7c-8a7b-46ee-a5a2-c2069e7810c5",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:25.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "0c72fa35-30f7-4a95-ae7e-30a3e20503f7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:27.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "b54f0d75-785b-4138-a9b3-72f061f84345",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904670,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:39:29.000+0000",
+    "CodeSha256": "OQdb5Z3x6j7MjWVL4qHD1HPk1R0ScJkQFXLl63zyaZg=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "f35a6c26-ec60-4ef4-a983-29fe2a8a6b96",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "login",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:login",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LoginHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:45.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "20b421e3-8977-42fb-a8e0-68c0ac015cdb",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "register",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:register",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.RegisterHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 30,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:47.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "0e1c0692-bfb6-4b5b-ad10-dd68b2679331",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "logout",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:logout",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.LogoutHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:49.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "60ebf22c-7303-4191-bb01-c6dc2095d1a2",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getUser",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getUser",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetUserHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:51.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "b179453f-14d3-4152-894c-9494bd5fe24b",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFeed",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFeed",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFeedHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:52.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "11f99cac-5b85-4517-af20-dc3a53408155",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getStory",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getStory",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetStoryHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:54.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "829cb98b-9781-41d5-a1e5-c3528f7d8b7e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "postStatus",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:postStatus",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.PostStatusHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:56.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "11fec927-7fbf-413e-b906-7c59e3854bdb",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowingCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowingCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingCountHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:51:58.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "042228fb-891a-4485-8625-f6426e714cc5",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowees",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowees",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowingHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:00.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "a9473cf2-765f-4cc1-a872-2413db06fd87",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowersCount",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowersCount",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowerCountHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:02.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "f4989b16-98e9-4904-b5e5-292dff3d96b1",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "getFollowers",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:getFollowers",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.GetFollowersHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 40,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:04.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "72d6ff49-0007-47b1-89fa-8654113c6742",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "follow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:follow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.FollowHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:06.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "3a75b4e2-bd42-4eb7-985e-bf8101389c36",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "unfollow",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:unfollow",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.UnfollowHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:07.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "cdc55d03-245b-461b-ab5f-8ec6fc39113e",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}
+{
+    "FunctionName": "isFollower",
+    "FunctionArn": "arn:aws:lambda:us-west-1:139095049104:function:isFollower",
+    "Runtime": "java11",
+    "Role": "arn:aws:iam::139095049104:role/cs340lambdaexercise",
+    "Handler": "edu.byu.cs.tweeter.server.lambda.IsFollowerHandler::handleRequest",
+    "CodeSize": 9904667,
+    "Description": "",
+    "Timeout": 15,
+    "MemorySize": 512,
+    "LastModified": "2022-03-27T00:52:09.000+0000",
+    "CodeSha256": "P12JDNHLvgCAR+/M+KnS64Hn9rzu1jXqB5s2/Vmp6Hw=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "509b20de-f5d7-4212-88c3-8933364b4ec7",
+    "State": "Active",
+    "LastUpdateStatus": "InProgress",
+    "LastUpdateStatusReason": "The function is being created.",
+    "LastUpdateStatusReasonCode": "Creating",
+    "PackageType": "Zip"
+}

@@ -1,0 +1,18 @@
+Index: server/src/main/java/edu/byu/cs/tweeter/server/dao/dynamo/StatusDAODynamo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/edu/byu/cs/tweeter/server/dao/dynamo/StatusDAODynamo.java b/server/src/main/java/edu/byu/cs/tweeter/server/dao/dynamo/StatusDAODynamo.java
+--- a/server/src/main/java/edu/byu/cs/tweeter/server/dao/dynamo/StatusDAODynamo.java	
++++ b/server/src/main/java/edu/byu/cs/tweeter/server/dao/dynamo/StatusDAODynamo.java	(date 1648347578722)
+@@ -179,8 +179,8 @@
+ 
+     @Override
+     public void PostStatus(PostStatusRequest request) {
+-        addTheFeeds(request.getStatus());
+         addTheStory(request.getStatus());
++        addTheFeeds(request.getStatus());
+     }
+ 
+     private void addTheFeeds(Status status) {

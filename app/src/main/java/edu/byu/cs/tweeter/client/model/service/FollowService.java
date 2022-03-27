@@ -84,13 +84,13 @@ public class FollowService extends BaseService {
      * @param limit the maximum number of followees to return.
      * @param lastFollowee the last followee returned in the previous request (can be null).
      */
-    public void getFollowees(AuthToken authToken, User targetUser, int limit, User lastFollowee) {
-        GetFollowingTask followingTask = getGetFollowingTask(targetUser, limit, lastFollowee);
+    public void getFollowees(AuthToken authToken, User targetUser, int limit, User lastFollowee, boolean firstTime) {
+        GetFollowingTask followingTask = getGetFollowingTask(targetUser, limit, lastFollowee, firstTime);
         BackgroundTaskUtils.runTask(followingTask);
     }
 
-    public void getFollowers(AuthToken authToken, User targetUser, int limit, User lastFollower) {
-        GetFollowersTask getFollowersTask = getGetFollowersTask(targetUser, limit, lastFollower);
+    public void getFollowers(AuthToken authToken, User targetUser, int limit, User lastFollower, boolean firstTime) {
+        GetFollowersTask getFollowersTask = getGetFollowersTask(targetUser, limit, lastFollower, firstTime);
         BackgroundTaskUtils.runTask(getFollowersTask);
     }
 
@@ -102,15 +102,15 @@ public class FollowService extends BaseService {
      * @return the instance.
      */
     // This method is public so it can be accessed by test cases
-    public GetFollowingTask getGetFollowingTask(User targetUser, int limit, User lastFollowee) {
+    public GetFollowingTask getGetFollowingTask(User targetUser, int limit, User lastFollowee, boolean firstTime) {
         return new GetFollowingTask(targetUser, limit, lastFollowee,
-                new GetFollowingHandler(Looper.getMainLooper(), followObserver)
+                new GetFollowingHandler(Looper.getMainLooper(), followObserver), firstTime
         );
     }
 
-    public GetFollowersTask getGetFollowersTask(User targetUser, int limit, User lastFollower) {
+    public GetFollowersTask getGetFollowersTask(User targetUser, int limit, User lastFollower, boolean firstTime) {
         return new GetFollowersTask(targetUser, limit, lastFollower,
-                new GetFollowersHandler(Looper.getMainLooper(), followObserver));
+                new GetFollowersHandler(Looper.getMainLooper(), followObserver), firstTime);
     }
 
     /**
@@ -169,13 +169,14 @@ public class FollowService extends BaseService {
         public static final String ITEMS_KEY = "following";
 
         public GetFollowingTask(User targetUser, int limit, User lastFollower,
-                                Handler messageHandler) {
-            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser);
+                                Handler messageHandler, boolean firstTime) {
+            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser, firstTime);
         }
 
         @Override
         protected Pair<List<User>, Boolean> getItems(int limit, User lastItem, User targetUser, AuthToken authToken) throws IOException, TweeterRemoteException {
-            FollowingRequest request = new FollowingRequest(authToken, targetUser.getAlias(), limit, lastItem != null ? lastItem.getAlias() : null);
+            FollowingRequest request = new FollowingRequest(authToken, targetUser.getAlias(), limit, lastItem != null ? lastItem.getAlias() : null, firstTime);
+            firstTime = false;
             FollowingResponse response = getServerFacade().getFollowees(request, URL_PATH_FOLLOWING);
 
             if (response.isSuccess()) {
@@ -209,13 +210,14 @@ public class FollowService extends BaseService {
         public static final String ITEMS_KEY = "followers";
 
         public GetFollowersTask(User targetUser, int limit, User lastFollower,
-                                Handler messageHandler) {
-            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser);
+                                Handler messageHandler, boolean firstTime) {
+            super(limit, lastFollower, ITEMS_KEY, messageHandler, targetUser, firstTime);
         }
 
         @Override
         protected Pair<List<User>, Boolean> getItems(int limit, User lastItem, User targetUser, AuthToken authToken) throws IOException, TweeterRemoteException {
-            FollowersRequest request = new FollowersRequest(authToken, targetUser.getAlias(), limit, lastItem != null ? lastItem.getAlias() : null);
+            FollowersRequest request = new FollowersRequest(authToken, targetUser.getAlias(), limit, lastItem != null ? lastItem.getAlias() : null, firstTime);
+            firstTime = false;
             FollowersResponse response = getServerFacade().getFollowers(request, URL_PATH_FOLLOWERS);
 
             if (response.isSuccess()) {

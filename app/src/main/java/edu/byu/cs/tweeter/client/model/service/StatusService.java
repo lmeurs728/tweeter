@@ -8,17 +8,16 @@ import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.net.TweeterRemoteException;
-import edu.byu.cs.tweeter.model.net.request.FollowersRequest;
 import edu.byu.cs.tweeter.model.net.request.GetFeedRequest;
 import edu.byu.cs.tweeter.model.net.request.GetStoryRequest;
 import edu.byu.cs.tweeter.model.net.request.PostStatusRequest;
 import edu.byu.cs.tweeter.model.net.response.FeedResponse;
-import edu.byu.cs.tweeter.model.net.response.FollowersResponse;
 import edu.byu.cs.tweeter.model.net.response.PostStatusResponse;
 import edu.byu.cs.tweeter.model.net.response.StoryResponse;
 import edu.byu.cs.tweeter.util.Pair;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class StatusService extends BaseService {
@@ -31,14 +30,14 @@ public class StatusService extends BaseService {
         this.observer = observer;
     }
 
-    public void getStory(int limit, Status lastStatus, User targetUser) {
+    public void getStory(int limit, Status lastStatus, User targetUser, boolean firstTime) {
         GetStoryTask getStoryTask = new GetStoryTask(limit, lastStatus,
-                new GetStoryHandler(observer), targetUser);
+                new GetStoryHandler(observer), targetUser, firstTime);
         BackgroundTaskUtils.runTask(getStoryTask);
     }
 
-    public void doGetFeedTask(int PAGE_SIZE, Status lastItem) {
-        GetFeedTask getFeedTask = new GetFeedTask(PAGE_SIZE, lastItem, new GetFeedHandler(observer));
+    public void doGetFeedTask(int PAGE_SIZE, Status lastItem, boolean firstTime) {
+        GetFeedTask getFeedTask = new GetFeedTask(PAGE_SIZE, lastItem, new GetFeedHandler(observer), firstTime);
         BackgroundTaskUtils.runTask(getFeedTask);
     }
 
@@ -50,13 +49,14 @@ public class StatusService extends BaseService {
         public static final String ITEMS_KEY = "statuses";
 
         public GetFeedTask(int limit, Status lastStatus,
-                           Handler messageHandler) {
-            super(limit, lastStatus, ITEMS_KEY, messageHandler, Cache.getInstance().getCurrUser());
+                           Handler messageHandler, boolean firstTime) {
+            super(limit, lastStatus, ITEMS_KEY, messageHandler, Cache.getInstance().getCurrUser(), firstTime);
         }
 
         @Override
-        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem, User targetUser, AuthToken authToken) throws IOException, TweeterRemoteException {
-            GetFeedRequest request = new GetFeedRequest(authToken, lastItem, limit, targetUser.getAlias());
+        protected Pair<List<Status>, Boolean> getItems(int limit, Status lastStatus, User targetUser, AuthToken authToken) throws IOException, TweeterRemoteException {
+            GetFeedRequest request = new GetFeedRequest(authToken, lastStatus == null ? 0 : new Date(lastStatus.getDate()).getTime(), limit, targetUser.getAlias(), firstTime);
+            firstTime = false;
             FeedResponse response = getServerFacade().getFeed(request, URL_PATH_GET_FEED);
 
             if (response.isSuccess()) {
@@ -80,13 +80,14 @@ public class StatusService extends BaseService {
         public static final String ITEMS_KEY = "statuses";
 
         public GetStoryTask(int limit, Status lastStatus,
-                           Handler messageHandler, User targetUser) {
-            super(limit, lastStatus, ITEMS_KEY, messageHandler, targetUser);
+                           Handler messageHandler, User targetUser, boolean firstTime) {
+            super(limit, lastStatus, ITEMS_KEY, messageHandler, targetUser, firstTime);
         }
 
         @Override
         protected Pair<List<Status>, Boolean> getItems(int limit, Status lastItem, User targetUser, AuthToken authToken) throws IOException, TweeterRemoteException {
-            GetStoryRequest request = new GetStoryRequest(authToken, lastItem, limit, targetUser.getAlias());
+            GetStoryRequest request = new GetStoryRequest(authToken, lastItem == null ? 0 : new Date(lastItem.getDate()).getTime(), limit, targetUser.getAlias(), firstTime);
+            firstTime = false;
             StoryResponse response = getServerFacade().getStory(request, URL_PATH_GET_STORY);
 
             if (response.isSuccess()) {

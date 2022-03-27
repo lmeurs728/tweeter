@@ -15,32 +15,25 @@ TODO:
      - getFollowersCount
    - Sequence Diagram for when a user successfully sends a status
 
-   Key: * is request
-        # is response
-        $ is lambda
-        % is service
-        @ is dao (optional)
-        ~ is lambda
-        ! is api gateway
-        & is facade
-        ? is refactored
+   Key:
 
-   1  Login             * # $ % @ ~ ! & ?
- Paged
-   2  GetFollowing      * # $ % @ ~ ! & ?
-   3  GetFollowers      * # $ % @ ~ ! & ?
-   4  GetFeed           * # $ % @ ~ ! & ?
-   5  GetStory          * # $ % @ ~ ! & ?
 
-   6  Follow            * # $ % @ ~ ! & ?
-   7  Unfollow          * # $ % @ ~ ! & ?
-   8  GetFollowingCount * # $ % @ ~ ! & ?
-   9  GetFollowerCount  * # $ % @ ~ ! & ?
-   10 Register          * # $ % @ ~ ! & ?
-   11 Logout            * # $ % @ ~ ! & ?
-   12 GetUser           * # $ % @ ~ ! & ?
-   13 PostStatus        * # $ % @ ~ ! & ?
-   14 IsFollower        * # $ % @ ~ ! & ?
+   1  Login             #
+ Paged#
+   2  GetFollowing      #
+   3  GetFollowers      #
+   4  GetFeed           #
+   5  GetStory          #
+#
+   6  Follow            #
+   7  Unfollow          #
+   8  GetFollowingCount #
+   9  GetFollowerCount  #
+   10 Register          #
+   11 Logout            #
+   12 GetUser           #
+   13 PostStatus        #
+   14 IsFollower        #
 
    ^\[Bad Request\].*
    ^\[Server Error\].*
@@ -50,3 +43,6 @@ TODO:
    - Followers
    - FollowerCount
    - Register
+
+
+   edit the removeloadingfooter in the recycle view to make sure it didn't go negative

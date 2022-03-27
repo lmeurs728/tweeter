@@ -12,6 +12,7 @@ public class FollowingRequest {
     private String followerAlias;
     private int limit;
     private String lastFolloweeAlias;
+    private boolean firstTime;
 
     /**
      * Allows construction of the object from Json. Private so it won't be called in normal code.
@@ -27,11 +28,12 @@ public class FollowingRequest {
      *                     there was no previous request or if no followees were returned in the
      *                     previous request).
      */
-    public FollowingRequest(AuthToken authToken, String followerAlias, int limit, String lastFolloweeAlias) {
+    public FollowingRequest(AuthToken authToken, String followerAlias, int limit, String lastFolloweeAlias, boolean firstTime) {
         this.authToken = authToken;
         this.followerAlias = followerAlias;
         this.limit = limit;
         this.lastFolloweeAlias = lastFolloweeAlias;
+        this.firstTime = firstTime;
     }
 
     /**
@@ -105,5 +107,13 @@ public class FollowingRequest {
      */
     public void setLastFolloweeAlias(String lastFolloweeAlias) {
         this.lastFolloweeAlias = lastFolloweeAlias;
+    }
+
+    public boolean isFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(boolean firstTime) {
+        this.firstTime = firstTime;
     }
 }

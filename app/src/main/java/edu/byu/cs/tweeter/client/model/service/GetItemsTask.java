@@ -6,7 +6,6 @@ import edu.byu.cs.tweeter.client.cache.Cache;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.net.TweeterRemoteException;
-import edu.byu.cs.tweeter.util.FakeData;
 import edu.byu.cs.tweeter.util.Pair;
 
 import java.io.IOException;
@@ -21,6 +20,7 @@ public abstract class GetItemsTask<T> extends BackgroundTask {
 
     public String ITEMS_KEY = "";
     public static final String MORE_PAGES_KEY = "more-pages";
+    public boolean firstTime = true;
 
     /**
      * The user whose followers are being retrieved.
@@ -38,12 +38,13 @@ public abstract class GetItemsTask<T> extends BackgroundTask {
     private final T lastItem;
 
     public GetItemsTask(int limit, T lastItem, String ITEMS_KEY,
-                            Handler messageHandler, User targetUser) {
+                            Handler messageHandler, User targetUser, boolean firstTime) {
         super(messageHandler);
         this.targetUser = targetUser;
         this.limit = limit;
         this.lastItem = lastItem;
         this.ITEMS_KEY = ITEMS_KEY;
+        this.firstTime = firstTime;
     }
 
 //    protected FakeData getFakeData() {

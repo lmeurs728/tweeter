@@ -10,8 +10,8 @@ import edu.byu.cs.tweeter.model.net.request.FollowingRequest;
  * A paged response for a {@link FollowingRequest}.
  */
 public class FollowingResponse extends PagedResponse {
-
     private List<User> followees;
+    private String lastUserAlias;
 
     /**
      * Creates a response indicating that the corresponding request was unsuccessful. Sets the
@@ -29,9 +29,10 @@ public class FollowingResponse extends PagedResponse {
      * @param followees the followees to be included in the result.
      * @param hasMorePages an indicator of whether more data is available for the request.
      */
-    public FollowingResponse(List<User> followees, boolean hasMorePages) {
+    public FollowingResponse(List<User> followees, boolean hasMorePages, String lastUserAlias) {
         super(true, hasMorePages);
         this.followees = followees;
+        this.lastUserAlias = lastUserAlias;
     }
 
     /**
@@ -63,5 +64,13 @@ public class FollowingResponse extends PagedResponse {
     @Override
     public int hashCode() {
         return Objects.hash(followees);
+    }
+
+    public String getLastUserAlias() {
+        return lastUserAlias;
+    }
+
+    public void setLastUserAlias(String lastUserAlias) {
+        this.lastUserAlias = lastUserAlias;
     }
 }

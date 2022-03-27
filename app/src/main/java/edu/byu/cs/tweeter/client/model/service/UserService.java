@@ -9,7 +9,6 @@ import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.net.TweeterRemoteException;
 import edu.byu.cs.tweeter.model.net.request.*;
 import edu.byu.cs.tweeter.model.net.response.*;
-import edu.byu.cs.tweeter.util.FakeData;
 import edu.byu.cs.tweeter.util.Pair;
 
 import java.io.IOException;
@@ -166,7 +165,7 @@ public class UserService extends BaseService {
 
         @Override
         protected void runTask() throws IOException, TweeterRemoteException {
-            LogoutRequest logoutRequest = new LogoutRequest();
+            LogoutRequest logoutRequest = new LogoutRequest(Cache.getInstance().getCurrUserAuthToken());
             LogoutResponse response = getServerFacade().logout(logoutRequest, URL_PATH_LOGOUT);
             if (response.isSuccess()) {
                 sendSuccessMessage();

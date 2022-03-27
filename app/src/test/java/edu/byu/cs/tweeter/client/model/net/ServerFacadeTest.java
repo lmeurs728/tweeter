@@ -47,7 +47,7 @@ public class ServerFacadeTest {
     public void getFollowers_success() {
         try {
             FollowersResponse response = new ServerFacade().getFollowers(
-                    new FollowersRequest(new AuthToken(), "@allen", 10, "@elizabeth"),
+                    new FollowersRequest(new AuthToken(), "@allen", 10, "@elizabeth", true),
                     "/get-followers");
             assertEquals(10, response.getFollowers().size());
             assertEquals("@frank", response.getFollowers().get(0).getAlias());
@@ -62,7 +62,7 @@ public class ServerFacadeTest {
     public void testFollowers_failure() {
         try {
             FollowersResponse response = new ServerFacade().getFollowers(
-                    new FollowersRequest(new AuthToken(), null, 10, "@elizabeth"),
+                    new FollowersRequest(new AuthToken(), null, 10, "@elizabeth", true),
                     "/get-followers");
         }
         catch (IOException | TweeterRemoteException ex) {

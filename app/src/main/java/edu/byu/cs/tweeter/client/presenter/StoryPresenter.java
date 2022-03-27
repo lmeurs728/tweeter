@@ -12,8 +12,8 @@ public class StoryPresenter extends PagedPresenter<Status> implements StatusServ
     }
 
     @Override
-    public void doServiceMethod() {
-        new StatusService(this).getStory(PAGE_SIZE, lastItem, user);
+    public void doServiceMethod(boolean firstTime) {
+        new StatusService(this).getStory(PAGE_SIZE, lastItem, user, firstTime);
     }
 
     @Override

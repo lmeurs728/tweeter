@@ -10,60 +10,42 @@ import edu.byu.cs.tweeter.model.net.response.LoginResponse;
 import edu.byu.cs.tweeter.model.net.response.LogoutResponse;
 import edu.byu.cs.tweeter.model.net.response.RegisterResponse;
 import edu.byu.cs.tweeter.model.net.response.UserResponse;
-import edu.byu.cs.tweeter.util.FakeData;
+import edu.byu.cs.tweeter.server.dao.AuthDAO;
+import edu.byu.cs.tweeter.server.dao.ImageDAO;
+import edu.byu.cs.tweeter.server.dao.UserDAO;
 
-public class UserService {
+public class UserService extends BaseService {
     public LogoutResponse logout(LogoutRequest request) {
+        getAuthDAO().deleteAuthToken(request.getToken());
         return new LogoutResponse();
     }
 
+    // TODO add error handling
     public LoginResponse login(LoginRequest request) {
-        if(request.getUsername() == null){
+        if (request.getUsername() == null) {
             throw new RuntimeException("[BadRequest] Missing a username");
-        } else if(request.getPassword() == null) {
+        } else if (request.getPassword() == null) {
             throw new RuntimeException("[BadRequest] Missing a password");
         }
 
-        // TODO: Generates dummy data. Replace with a real implementation.
-        User user = getDummyUser();
-        AuthToken authToken = getDummyAuthToken();
-        return new LoginResponse(user, authToken);
+        User user;
+        try {
+            user = getUserDAO().login(request);
+        } catch (Exception e) {
+            return new LoginResponse(e.getMessage());
+        }
+        // get an auth token from the AuthDAO
+        AuthToken auth = getAuthDAO().createAuthToken(request.getUsername());
+        return new LoginResponse(user, auth);
     }
 
-    /**
-     * Returns the dummy user to be returned by the login operation.
-     * This is written as a separate method to allow mocking of the dummy user.
-     *
-     * @return a dummy user.
-     */
-    User getDummyUser() {
-        return getFakeData().getFirstUser();
-    }
-
-    /**
-     * Returns the dummy auth token to be returned by the login operation.
-     * This is written as a separate method to allow mocking of the dummy auth token.
-     *
-     * @return a dummy auth token.
-     */
-    AuthToken getDummyAuthToken() {
-        return getFakeData().getAuthToken();
-    }
-
-    /**
-     * Returns the {@link FakeData} object used to generate dummy users and auth tokens.
-     * This is written as a separate method to allow mocking of the {@link FakeData}.
-     *
-     * @return a {@link FakeData} instance.
-     */
-    FakeData getFakeData() {
-        return new FakeData();
-    }
-
+    // TODO: add error handling
     public RegisterResponse register(RegisterRequest input) {
+        // validateRequest
         if(input.getUsername() == null){
             throw new RuntimeException("[BadRequest] Missing a username");
-        } else if(input.getPassword() == null) {
+        }
+        else if(input.getPassword() == null) {
             throw new RuntimeException("[BadRequest] Missing a password");
         }
         else if(input.getFirstName() == null) {
@@ -75,14 +57,29 @@ public class UserService {
         else if(input.getImage() == null) {
             throw new RuntimeException("[BadRequest] Missing an image");
         }
-
-        // TODO: Generates dummy data. Replace with a real implementation.
-        User user = getDummyUser();
-        AuthToken authToken = getDummyAuthToken();
-        return new RegisterResponse(user, authToken);
+        // upload image to S3
+        String imageURL = getImageDAO().uploadImage(input.getImage(), input.getUsername());
+        // tell the UserDAO to register a new user
+        User user = getUserDAO().register(input, imageURL);
+        // get an auth token from the AuthDAO
+        AuthToken auth = getAuthDAO().createAuthToken(input.getUsername());
+        // return a RegisterResponse
+        return new RegisterResponse(user, auth);
     }
 
     public UserResponse getUser(GetUserRequest input) {
-        return new UserResponse(getDummyUser());
+        return getUserDAO().getUser(input);
+    }
+
+    public UserDAO getUserDAO() {
+        return factory.getUserDAO();
+    }
+
+    public ImageDAO getImageDAO() {
+        return factory.getImageDAO();
+    }
+
+    public AuthDAO getAuthDAO() {
+        return factory.getAuthDAO();
     }
 }

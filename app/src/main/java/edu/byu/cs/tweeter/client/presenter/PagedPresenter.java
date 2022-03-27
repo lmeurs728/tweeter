@@ -30,14 +30,14 @@ public abstract class PagedPresenter<T> extends BasePresenter {
         this.view = view;
     }
 
-    public void loadMoreItems() {
+    public void loadMoreItems(boolean b) {
         if (!isLoading && hasMorePages) {
             setLoading(true);
-            doServiceMethod();
+            doServiceMethod(b);
         }
     }
 
-    public abstract void doServiceMethod();
+    public abstract void doServiceMethod(boolean b);
 
     @Override
     public void handleUserSuccess(User user) {

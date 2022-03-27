@@ -22,4 +22,12 @@ public class PostStatusRequest {
     public void setAuthToken(AuthToken authToken) {
         this.authToken = authToken;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

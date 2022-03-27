@@ -24,8 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import edu.byu.cs.tweeter.R;
-import edu.byu.cs.tweeter.client.cache.Cache;
-import edu.byu.cs.tweeter.client.model.service.backgroundTasks.GetFeedTask;
+import edu.byu.cs.tweeter.client.model.service.StatusService;
 import edu.byu.cs.tweeter.client.presenter.FeedPresenter;
 import edu.byu.cs.tweeter.client.presenter.PagedPresenter;
 import edu.byu.cs.tweeter.client.view.main.MainActivity;
@@ -229,7 +228,7 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
          * Creates an instance and loads the first page of feed data.
          */
         FeedRecyclerViewAdapter() {
-            loadMoreItems();
+            loadMoreItems(true);
         }
 
         /**
@@ -332,13 +331,12 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
          * Causes the Adapter to display a loading footer and make a request to get more feed
          * data.
          */
-        void loadMoreItems(){
+        void loadMoreItems(boolean firstTime){
             if (!isLoading) {   // This guard is important for avoiding a race condition in the scrolling code.
                 isLoading = true;
                 addLoadingFooter();
 
-                GetFeedTask getFeedTask = new GetFeedTask(Cache.getInstance().getCurrUserAuthToken(),
-                        user, PAGE_SIZE, lastStatus, new GetFeedHandler());
+                StatusService.GetFeedTask getFeedTask = new StatusService.GetFeedTask(PAGE_SIZE, lastStatus, new GetFeedHandler(), firstTime);
                 ExecutorService executor = Executors.newSingleThreadExecutor();
                 executor.execute(getFeedTask);
             }
@@ -361,7 +359,9 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
          * the loading footer at the bottom of the list.
          */
         private void removeLoadingFooter() {
-            removeItem(feed.get(feed.size() - 1));
+            if (feed.size() > 0) {
+                removeItem(feed.get(feed.size() - 1));
+            }
         }
 
 
@@ -374,19 +374,19 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
                 isLoading = false;
                 removeLoadingFooter();
 
-                boolean success = msg.getData().getBoolean(GetFeedTask.SUCCESS_KEY);
+                boolean success = msg.getData().getBoolean(StatusService.GetFeedTask.SUCCESS_KEY);
                 if (success) {
-                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(GetFeedTask.STATUSES_KEY);
-                    hasMorePages = msg.getData().getBoolean(GetFeedTask.MORE_PAGES_KEY);
+                    List<Status> statuses = (List<Status>) msg.getData().getSerializable(StatusService.GetFeedTask.ITEMS_KEY);
+                    hasMorePages = msg.getData().getBoolean(StatusService.GetFeedTask.MORE_PAGES_KEY);
 
                     lastStatus = (statuses.size() > 0) ? statuses.get(statuses.size() - 1) : null;
 
                     feedRecyclerViewAdapter.addItems(statuses);
-                } else if (msg.getData().containsKey(GetFeedTask.MESSAGE_KEY)) {
-                    String message = msg.getData().getString(GetFeedTask.MESSAGE_KEY);
+                } else if (msg.getData().containsKey(StatusService.GetFeedTask.MESSAGE_KEY)) {
+                    String message = msg.getData().getString(StatusService.GetFeedTask.MESSAGE_KEY);
                     Toast.makeText(getContext(), "Failed to get feed: " + message, Toast.LENGTH_LONG).show();
-                } else if (msg.getData().containsKey(GetFeedTask.EXCEPTION_KEY)) {
-                    Exception ex = (Exception) msg.getData().getSerializable(GetFeedTask.EXCEPTION_KEY);
+                } else if (msg.getData().containsKey(StatusService.GetFeedTask.EXCEPTION_KEY)) {
+                    Exception ex = (Exception) msg.getData().getSerializable(StatusService.GetFeedTask.EXCEPTION_KEY);
                     Toast.makeText(getContext(), "Failed to get feed because of exception: " + ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
@@ -433,7 +433,7 @@ public class FeedFragment extends Fragment implements PagedPresenter.PagedView {
                     // Run this code later on the UI thread
                     final Handler handler = new Handler(Looper.getMainLooper());
                     handler.postDelayed(() -> {
-                            feedRecyclerViewAdapter.loadMoreItems();
+                            feedRecyclerViewAdapter.loadMoreItems(false);
                     }, 0);
                 }
             }

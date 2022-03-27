@@ -89,8 +89,8 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
 
         storyRecyclerView.addOnScrollListener(new StoryRecyclerViewPaginationScrollListener(layoutManager));
 
-        presenter.doServiceMethod();
-        presenter.loadMoreItems();
+//        presenter.doServiceMethod(true);
+//        presenter.loadMoreItems(true);
         return view;
     }
 
@@ -232,7 +232,7 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
          * Creates an instance and loads the first page of story data.
          */
         StoryRecyclerViewAdapter() {
-            loadMoreItems();
+            loadMoreItems(true);
         }
 
         /**
@@ -334,13 +334,14 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
         /**
          * Causes the Adapter to display a loading footer and make a request to get more story
          * data.
+         * @param b
          */
-        void loadMoreItems() {
+        void loadMoreItems(boolean b) {
 //            if (!isLoading) {   // This guard is important for avoiding a race condition in the scrolling code.
 //                isLoading = true;
 //                addLoadingFooter();
 
-                presenter.loadMoreItems();
+                presenter.loadMoreItems(b);
 //            }
         }
 
@@ -361,7 +362,9 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
          * the loading footer at the bottom of the list.
          */
         private void removeLoadingFooter() {
-            removeItem(story.get(story.size() - 1));
+            if (story.size() > 0) {
+                removeItem(story.get(story.size() - 1));
+            }
         }
     }
 
@@ -405,7 +408,7 @@ public class StoryFragment extends Fragment implements PagedPresenter.PagedView<
                     // Run this code later on the UI thread
                     final Handler handler = new Handler(Looper.getMainLooper());
                     handler.postDelayed(() -> {
-                            storyRecyclerViewAdapter.loadMoreItems();
+                            storyRecyclerViewAdapter.loadMoreItems(false);
                     }, 0);
                 }
             }

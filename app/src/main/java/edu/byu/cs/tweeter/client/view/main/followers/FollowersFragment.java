@@ -78,7 +78,7 @@ public class FollowersFragment extends Fragment implements PagedPresenter.PagedV
 
         followersRecyclerView.addOnScrollListener(new FollowRecyclerViewPaginationScrollListener(layoutManager));
 
-        presenter.loadMoreItems();
+        presenter.loadMoreItems(true);
 
         return view;
     }
@@ -272,7 +272,9 @@ public class FollowersFragment extends Fragment implements PagedPresenter.PagedV
          * the loading footer at the bottom of the list.
          */
         private void removeLoadingFooter() {
-            removeItem(users.get(users.size() - 1));
+            if (users.size() > 0) {
+                removeItem(users.get(users.size() - 1));
+            }
         }
 
         public void setLoading(boolean value) {
@@ -324,7 +326,7 @@ public class FollowersFragment extends Fragment implements PagedPresenter.PagedV
                     totalItemCount && firstVisibleItemPosition >= 0) {
                 // Run this code later on the UI thread
                 final Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(() -> presenter.loadMoreItems(), 0);
+                handler.postDelayed(() -> presenter.loadMoreItems(false), 0);
             }
         }
     }
